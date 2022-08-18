@@ -1,0 +1,19 @@
+npm install tailwindcss@latest @ngneat/tailwind@latest
+npm install -D @tailwindcss/aspect-ratio
+npm install -D @tailwindcss/forms
+npm install -D @tailwindcss/line-clamp
+npm i @tailwindcss/typography
+
+ng add @ngrx/store@latest
+ng add @ngrx/store-devtools@latest
+ng add @ngrx/effects@latest
+ng add @ngrx/router-store@latest
+
+
+npm install query-string
+
+
+
+npm i ng-click-outside
+npm i ngx-image-compress@13.1.0
+npm i ngx-moment

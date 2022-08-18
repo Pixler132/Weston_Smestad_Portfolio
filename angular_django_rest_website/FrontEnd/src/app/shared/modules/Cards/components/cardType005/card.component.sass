@@ -1,0 +1,163 @@
+/*PEN STYLES*/
+
+*
+  @apply box-border
+
+
+body
+  @apply bg-[#f1f1f1] m-8
+
+
+$color_white: #fff
+$color_prime: #5ad67d
+$color_grey: #e2e2e2
+$color_grey_dark: #a2a2a2
+
+.blog-card
+  @apply w-full flex flex-col mx-auto my-4 shadow-[0_3px_7px_-15px_rgba(0,0,0,0.1)] mb-[1.6%] bg-white leading-snug font-sans border-4 overflow-hidden z-0
+  a
+    @apply hover:text-[#5ad67d]
+
+    .photo
+      @apply hover:transform hover:scale-[1.3] hover:rotate-3
+  .meta
+    @apply relative z-0 h-[200px]
+  .photo
+    @apply absolute top-0 right-0 bottom-0 left-0 bg-cover bg-center transition-[transform_.2s]
+
+  .details,
+  .details ul
+    @apply m-auto p-0 list-none
+  .details
+    @apply absolute top-0 bottom-0 -left-full m-auto transition-[left_.2s] bg-black opacity-60 text-white p-[10px] w-full text-sm
+
+    a
+      @apply border-dotted underline
+
+    ul li
+      @apply inline-block
+
+    .author:before
+      @apply mr-[10px] content-['\f007']
+
+
+
+    .date:before
+      @apply mr-[10px] content-['\f133']
+
+
+    .tags
+      ul:before
+        @apply mr-[10px] content-['\f02b']
+
+      li
+        @apply mr-[2px]
+
+        &:first-child
+          @apply ml-[-4px]
+
+
+
+
+  .description
+    padding: 1rem
+    background: $color_white
+    position: relative
+    z-index: 1
+    h1,
+    h2
+      font-family: Poppins, sans-serif
+
+    h1
+      line-height: 1
+      margin: 0
+      font-size: 1.7rem
+
+    h2
+      font-size: 1rem
+      font-weight: 300
+      text-transform: uppercase
+      color: $color_grey_dark
+      margin-top: 5px
+
+    .read-more
+      text-align: right
+      a
+        color: $color_prime
+        display: inline-block
+        position: relative
+        &:after
+          content: "\f061"
+          font-family: FontAwesome
+          margin-left: -10px
+          opacity: 0
+          vertical-align: middle
+          transition: margin .3s, opacity .3s
+
+
+        &:hover:after
+          margin-left: 5px
+          opacity: 1
+
+
+
+
+  p
+    position: relative
+    margin: 1rem 0 0
+    &:first-of-type
+      margin-top: 1.25rem
+      &:before
+        content: ""
+        position: absolute
+        height: 5px
+        background: $color_prime
+        width: 35px
+        top: -0.75rem
+        border-radius: 3px
+
+
+
+  &:hover
+    .details
+      left: 0%
+
+
+
+
+  @media (min-width: 640px)
+    flex-direction: row
+    max-width: 700px
+    .meta
+      flex-basis: 40%
+      height: auto
+
+    .description
+      flex-basis: 60%
+      &:before
+        transform: skewX(-3deg)
+        content: ""
+        background: #fff
+        width: 30px
+        position: absolute
+        left: -10px
+        top: 0
+        bottom: 0
+        z-index: -1
+
+
+    &.alt
+      flex-direction: row-reverse
+      .description
+        &:before
+          left: inherit
+          right: -10px
+          transform: skew(3deg)
+
+
+      .details
+        padding-left: 25px
+
+
+
+

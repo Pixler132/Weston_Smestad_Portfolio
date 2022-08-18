@@ -1,0 +1,33 @@
+/api/article/                                       POST
+/api/article/{id}/             						GET
+
+/api/article/editcomment/{comment_id}/              PUT     /modify
+/api/article/editcomment/{comment_id}/              DELETE  /modify
+/api/article/postcomment/{article_id}				Post    /modify
+/api/article/commentFeed/{article_id}/				GET     /modify
+
+/api/article/edit/{id}/								PUT
+/api/article/edit/{id}/                             DELETE
+
+/api/article/favorite/{article_id}/                 POST
+/api/article/listArticle/favorite/{user_id}/		GET // MakeEndpoint
+/api/article/listArticle/							GET
+/api/article/listArticle/tags/						GET
+/api/usermanagement/autoLogin/						GET
+/api/usermanagement/login/							POST
+/api/usermanagement/logout/							POST
+
+/api/usermanagement/profileUpdate/					PUT
+/api/usermanagement/profile/{profile_id}/           GET  // MakeEndpoint
+
+AuthorizedEndpoints
+/api/authlogin/article/{id}/             						GET
+/api/authlogin/listArticle/										GET
+/api/authlogin/listArticle/favorite/{user_id}/					GET
+/api/authlogin/listArticle/tags/							    GET
+
+#Set up Logging on Comments, articles, profileUpdates
+#Log who did what when admin changes
+
+
+

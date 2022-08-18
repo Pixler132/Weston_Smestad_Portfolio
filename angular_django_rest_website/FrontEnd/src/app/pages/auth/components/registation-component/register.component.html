@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<!-- <div class="auth-page">
+  <div class="container page">
+    <div class="row">
+      <div class="col-md-6 offset-md-3 col-xs-12">
+        <h1 class="text-xs-center">Sign Up</h1>
+        <p class="text-xs-center">
+          <a [routerLink]="['/login']">Have an account?</a>
+        </p> -->
+<!-- <dz-backend-errors
+          *ngIf="backendErrors$ | async"
+          [backendErrors]="backendErrors$ | async"
+        ></dz-backend-errors> -->
+<!--
+        <form [formGroup]="form" (ngSubmit)="onSubmit()">
+          <fieldset>
+            <fieldset class="form-group">
+              <input
+                type="text"
+                class="form-control form-control-lg"
+                placeholder="Username"
+                formControlName="userName"
+              />
+            </fieldset>
+            <fieldset class="form-group">
+              <input
+                type="text"
+                class="form-control form-control-lg"
+                placeholder="Email"
+                formControlName="email"
+              />
+            </fieldset>
+            <fieldset class="form-group">
+              <input
+                type="text"
+                class="form-control form-control-lg"
+                placeholder="First Name"
+                formControlName="firstName"
+              />
+            </fieldset>
+            <fieldset class="form-group">
+              <input
+                type="text"
+                class="form-control form-control-lg"
+                placeholder="Last Name optional"
+                formControlName="lastName"
+              />
+            </fieldset>
+            <fieldset class="form-group">
+              <input
+                type="password"
+                class="form-control form-control-lg"
+                placeholder="Password"
+                formControlName="password"
+              />
+            </fieldset>
+            <button
+              class="btn btn-lg btn-primary pull-xs-right"
+              type="submit"
+              [disabled]="isSubmitting$"
+            >
+              Sign up
+            </button>
+          </fieldset>
+        </form>
+      </div>
+    </div>
+  </div>
+</div> -->
+<div class="flex items-center justify-center min-h-[100vh] relative">
+  <div
+    class="px-8 py-6 mx-4 mt-4 text-left bg-skin-base shadow-lg sm:w-[500px] rounded"
+  >
+    <div class="relative flex">
+      <button
+        class="z-10 hidden rounded-full hover:shadow-lg hover:bg-gray-200 w-11 h-11 sm:block"
+        [routerLink]="['/']"
+      >
+        <mat-icon class="text-2xl font-bold text-center">
+          arrow_backward
+        </mat-icon>
+      </button>
+      <img src="/assets/images/Dezeonic-logo (1).png" alt="" class="" />
+    </div>
+    <div>
+      <p class="text-2xl font-bold text-center align-middle">Register Now!</p>
+      <div *ngIf="backendErrors$ | async">
+        {{ backendErrors$ | async }}
+      </div>
+    </div>
+    <form action="" [formGroup]="form" (ngSubmit)="onSubmit()">
+      <div class="mt-4">
+        <div>
+          <div class="flex justify-between">
+            <label class="block" for="Name">Username</label>
+            <label
+              class="block pt-2 text-xs text-red-600"
+              for="Name"
+              *ngIf="!form.controls['userName'].valid && f['userName'].touched"
+            >
+              {{ backendErrors$ }}
+            </label>
+          </div>
+          <input
+            type="text"
+            placeholder="Username  required"
+            formControlName="userName"
+            ngModel
+            pattern="[a-zA-Z0-9]*"
+            [style.border-color]="
+              !form.controls['userName'].valid && f['userName'].touched
+                ? 'red'
+                : 'black'
+            "
+            class="w-full bg-gray-200 rounded shadow-[0_1px_0_#b3b3b3] border-none focus:outline-none focus:ring-1 focus:ring-blue-600"
+          />
+        </div>
+
+        <div class="mt-4 focus:text-blue-300">
+          <div class="flex justify-between">
+            <label
+              class="block"
+              for="email"
+              [style.color]="
+                !f['email'].valid && f['email'].touched ? 'red' : 'black'
+              "
+              appHighlight
+            >
+              Email
+            </label>
+            <label
+              class="block pt-2 text-xs text-red-600"
+              for="Name"
+              *ngIf="!form.controls['email'].valid && f['email'].touched"
+            >
+              Vaild Email Required
+            </label>
+          </div>
+          <input
+            type="text"
+            #email
+            placeholder="Email required"
+            formControlName="email"
+            [style.border-color]="
+              !form.controls['email'].valid && f['email'].touched
+                ? 'red'
+                : 'black'
+            "
+            appHighlight
+            class="w-full bg-gray-200 rounded shadow-[0_1px_0_#b3b3b3] border-none focus:ring-0"
+          />
+        </div>
+        <div class="mt-4">
+          <label class="block">Password</label>
+          <input
+            type="password"
+            placeholder="Password length must be 6-40"
+            formControlName="password"
+            [style.border-color]="
+              !form.controls['password'].valid && f['password'].touched
+                ? 'red'
+                : 'black'
+            "
+            class="w-full bg-gray-200 rounded shadow-[0_1px_0_#b3b3b3] border-none focus:outline-none focus:ring-1 focus:ring-blue-600"
+          />
+        </div>
+        <div class="mt-4">
+          <label class="block">Confirm Password</label>
+          <input
+            type="password"
+            placeholder="Password length must be 6-40"
+            formControlName="confirmPassword"
+            class="w-full bg-gray-200 rounded shadow-[0_1px_0_#b3b3b3] border-none focus:outline-none focus:ring-1 focus:ring-blue-600"
+          />
+        </div>
+        <span
+          class="text-xs text-red-400"
+          *ngIf="f['confirmPassword'].errors && f['confirmPassword'].touched"
+        >
+          Password must be same!
+        </span>
+        <div class="flex">
+          <button
+            type="submit"
+            [disabled]="form.invalid"
+            class="w-full px-6 py-2 mt-4 text-white bg-blue-600 rounded-lg hover:bg-blue-900"
+          >
+            Create Account
+          </button>
+        </div>
+        <div class="mt-6 text-grey-dark">
+          Already have an account?
+          <a class="text-blue-600 hover:underline" [routerLink]="['/login']">
+            Log in
+          </a>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

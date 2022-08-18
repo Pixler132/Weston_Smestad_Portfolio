@@ -1,0 +1,20 @@
+<div
+  class="w-5/6 mx-auto mt-5 overflow-visible text-lg pt-7"
+  *ngIf="currentUser"
+>
+  <h1 class="text-2xl font-bold">Settings</h1>
+  <mat-tab-group>
+    <mat-tab label="About">
+      <dz-AboutPage></dz-AboutPage>
+    </mat-tab>
+    <mat-tab label="Privacy">
+      add to privacy switches
+      <mat-slide-toggle class="example-margin" [checked]="true">
+        Slide me!
+      </mat-slide-toggle>
+    </mat-tab>
+    <mat-tab label="Logindata">
+      <dz-loginDataPage></dz-loginDataPage>
+    </mat-tab>
+  </mat-tab-group>
+</div>

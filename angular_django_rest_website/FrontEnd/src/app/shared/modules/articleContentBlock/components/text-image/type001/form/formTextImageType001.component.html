@@ -1,0 +1,18 @@
+<div [formGroup]="parentFormGroup" class="">
+  <div class="mt-5">
+    <div class="flex justify-center w-full h-auto rounded">
+      <textarea
+        type="text"
+        class="w-full mt-2 placeholder-gray-300 border border-gray-300 rounded-md h-44 focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300"
+        placeholder="Input content. Text not required"
+        formControlName="body"
+      ></textarea>
+
+      <dz-content-image-form
+        [parentFormGroup]="parentFormGroup"
+        [imageNumber]="1"
+        class="rounded"
+      ></dz-content-image-form>
+    </div>
+  </div>
+</div>

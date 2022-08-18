@@ -1,0 +1,66 @@
+class Comment(models.Model):
+    author = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+    )
+    article = models.ForeignKey(Article, on_delete = models.CASCADE)
+    comment = models.CharField(max_length=800)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+class Reply(models.Model):
+    author = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+    )
+    originalComment = models.ForeignKey(Comment, on_delete = models.CASCADE)
+    comment = models.CharField(max_length=800)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+class Profile(models.Model):
+    user = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+    )
+    lower_username = models.CharField(max_length=150, unique=True)
+    image = models.ImageField(upload_to ='Profile/',null=True, blank = True)
+    bio = models.TextField(blank=True, null=True)
+    emailVerified = models.BooleanField(default=False)
+    publicFavorite = models.BooleanField(default=False)
+    owner = models.BooleanField(default=False)
+
+    def __str__(self) -> str:
+        return f"{self.user.username} Profile {self.user.id}"
+
+Server Reply
+	{
+		"commentFeed" :{
+			"comments" : [{  # List of comments
+					author:{
+						authorId   : int						//CHANGES
+						username   : String					    //CHANGES
+						profileImg : String					    //CHANGES
+					}
+					"comment_id"   : int
+					"content"      : String
+					"creationDate" : Date
+					"replies : [
+						{  # List of comments
+						author:{
+							authorId    : int						//CHANGES
+							username    : String					//CHANGES
+							profileImg  : String					//CHANGES
+						}
+						"reply_id"   	: int
+						"content"       : String
+						"creationDate"  : Date
+						},
+						{...}
+					]
+				},
+				{...}]
+				"commentCount" : Int
+			}
+	}
+	

@@ -1,0 +1,44 @@
+
+h1
+  @apply text-5xl mt-8 font-EB-Garamond text-center absolute m-0 bottom-4 text-white w-full
+
+.blog-wrapper
+  @apply p-4 flex flex-row justify-center flex-wrap max-w-[300px] m-4 bg-[#fff] border-0 border-[#CB6074] text-center cursor-pointer hover:shadow-[0_3px_10px_0_rgba(0,0,0,.1)]
+  .card-img
+    img
+      @apply hover:opacity-80
+    @apply relative text-center bg-[#CB6074] max-h-44 w-full border-b-4 border-[#CB6074]
+  .card-text
+    @apply py-8 px-4 leading-6
+.card-details
+  @apply mt-8 text-[#3C3C3C]
+  span
+    @apply px-0 py-8
+  i
+    @apply mr-1
+
+  &:before
+    content: ''
+    position: absolute
+    bottom: -8px
+    left: 50%
+    margin-left: -10px
+    width: 0
+    height: 0
+    border-top: solid 10px #CB6074
+    border-left: solid 10px transparent
+    border-right: solid 10px transparent
+  .read-more
+    display: inline-block
+    width: auto
+    text-align: center
+    text-transform: uppercase
+    background: #CB6074
+    color: #fff
+    padding: 15px
+    margin-bottom: 30px
+    font-family: 'Oswald', sans-serif
+    &:hover
+      background: darken(#CB6074,20%)
+.favorited
+  @apply text-red-600

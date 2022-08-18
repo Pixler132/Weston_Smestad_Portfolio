@@ -1,0 +1,26 @@
+<div class="flex w-full h-auto pt-2" (click)="onEdit('name')">
+  <dz-name-form
+    class="w-full"
+    [currentUser]="currentUser"
+    [edit]="edit.name"
+    (cancelEdit)="onReset()"
+  ></dz-name-form>
+</div>
+<div class="my-2 border"></div>
+<div class="flex h-auto" (click)="onEdit('bio')">
+  <!-- <div class="w-1/4">About me</div>
+  <div class="flex w-full" *ngIf="!edit.bio">
+    <div class="w-full whitespace-pre-wrap">
+      {{ currentUser.currentUser.bio }}
+    </div>
+    <div class="w-1/6">edit</div>
+  </div> -->
+
+  <dz-bio-form
+    class="w-full"
+    [edit]="edit.bio"
+    [currentUser]="currentUser"
+    (cancelEdit)="onReset()"
+  ></dz-bio-form>
+  <!-- <div *ngIf="edit.bio" class="w-1/6"></div> -->
+</div>

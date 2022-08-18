@@ -1,0 +1,21 @@
+Secondary Login endpoint for admin users disconnected from users
+
+Article Creation
+Article Statistics view count, unique views, comments, and favorites, 
+publication date - feature to set when article is released 
+User management - delete modify and change any thing that a user can create
+User Moderation - block priviledge to comments, and delete comments
+Log comments, and comment changes
+Article Logs for any changes done on article as well as back log
+Defining available tags in use in articles for catagorical purposes
+Manage articles - deletion, hiding, and editing
+
+Create Admin Accounts with different priviledges
+Owner
+Editor    - only editor and owner can publish
+Writer 	  - can put article in system to be published later
+Moderator - can delete comments
+User 
+
+Reporting comment feature for moderation
+Log reports

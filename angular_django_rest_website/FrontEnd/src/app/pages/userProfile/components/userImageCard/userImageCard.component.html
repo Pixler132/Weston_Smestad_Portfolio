@@ -1,0 +1,93 @@
+<!-- <div class="pt-2 text-center capitalize" *ngIf="userProfile">
+  <img
+    [src]="baseMedia + userProfile.image"
+    alt=""
+    class="w-40 h-40 m-3 rounded-md"
+  />
+  <p class="text-xl">
+    {{ userProfile.userName }}
+  </p>
+  <div class="flex justify-center gap-1 pt-4 ml-3">
+    <button
+      *ngIf="isCurrentUserProfile$ | async"
+      [routerLink]="['/profileupdate']"
+      class="flex p-1 px-3 rounded text-skin-contrast bg-skin-button"
+    >
+      Edit
+    </button>
+    <div class="flex" *ngIf="!(isCurrentUserProfile$ | async)">
+      <button
+        *ngIf="!followtemp"
+        class="flex p-1 px-3 text-center bg-white border-2 border-blue-300 rounded"
+      >
+        Follow
+        <svg
+          version="1.1"
+          id="Capa_1"
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          x="0px"
+          y="0px"
+          viewBox="0 0 358.299 358.299"
+          style="enable-background: new 0 0 358.299 358.299;"
+          xml:space="preserve"
+          class="w-6 h-6 translate-x-1 translate-y-1 text"
+        >
+          <path
+            id="XMLID_169_"
+            d="M251.787,27.034c-27.396,0-53.066,10.247-72.638,28.581c-19.572-18.334-45.242-28.581-72.638-28.581 C47.781,27.034,0,74.816,0,133.547c0,28.929,9.521,57.409,28.298,84.647c14.518,21.06,34.603,41.417,59.695,60.504 c42.092,32.02,83.649,49.464,85.398,50.191l5.715,2.376l5.728-2.345c1.75-0.716,43.334-17.913,85.448-49.817 c25.107-19.02,45.202-39.37,59.727-60.486c18.772-27.29,28.29-55.911,28.29-85.069C358.299,74.816,310.518,27.034,251.787,27.034z M179.181,298.625C151.149,285.642,30,224.254,30,133.547c0-42.189,34.323-76.512,76.512-76.512 c23.976,0,46.114,10.929,60.738,29.985l11.9,15.507l11.9-15.507c14.624-19.056,36.762-29.985,60.738-29.985 c42.188,0,76.512,34.323,76.512,76.512C328.299,224.906,207.201,285.771,179.181,298.625z"
+          />
+        </svg>
+      </button>
+      <button
+        *ngIf="followtemp"
+        class="flex p-1 px-3 bg-red-100 border-2 border-red-300 rounded"
+      >
+        Unfollow
+
+        <svg
+          version="1.1"
+          id="Capa_1"
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          x="0px"
+          y="0px"
+          viewBox="0 0 302.489 302.489"
+          style="enable-background: new 0 0 302.489 302.489; fill: #e34326;"
+          xml:space="preserve"
+          class="w-6 h-6 translate-x-1 translate-y-1 border-red-600"
+        >
+          <path
+            d="M302.351,98.012c-1.116-20.846-9.942-40.422-24.855-55.122c-15.103-14.887-34.811-23.086-55.491-23.086 c-30.776,0-53.082,24.334-65.065,37.408c-1.85,2.019-4.018,4.384-5.527,5.827c-1.208-1.25-2.845-3.114-4.351-4.828 c-10.944-12.466-33.72-38.406-66.571-38.406c-20.68,0-40.387,8.199-55.49,23.086C10.087,57.59,1.259,77.165,0.143,98.012 c-1.111,20.812,4.212,38.921,17.26,58.72c10.324,15.669,37.545,46.266,66.195,74.408c14.757,14.495,28.339,26.779,39.277,35.524 c17.762,14.2,24.565,16.021,28.506,16.021c3.695,0,10.683-1.657,28.615-15.981c10.913-8.717,24.448-20.982,39.143-35.468 c28.393-27.99,55.515-58.628,65.956-74.507C293.877,143.372,303.774,124.629,302.351,98.012z"
+          />
+        </svg>
+      </button>
+    </div>
+  </div>
+</div> -->
+<div
+  class="w-full flex flex-col justify-center items-center relative gap-[11px] px-[57px] py-[23px] rounded-[13px] bg-[#f3f3f3]"
+  style="box-shadow: 0px 4px 4px 0 rgba(0, 0, 0, 0.25);"
+  *ngIf="userProfile"
+>
+  <img
+    [src]="baseMedia + userProfile.image"
+    class="flex-grow-0 flex-shrink-0 min-w-[208px] h-[193px] rounded-md object-cover"
+  />
+  <p class="flex-grow-0 flex-shrink-0 text-2xl text-left text-black">
+    {{ userProfile.userName }}
+  </p>
+  <div
+    class="flex justify-start items-center flex-grow-0 flex-shrink-0 py-[7px]"
+  >
+    <div
+      class="flex justify-start items-start flex-grow-0 flex-shrink-0 relative space-x-[-6px] px-3 py-1 rounded bg-blue-600"
+      *ngIf="isCurrentUserProfile$ | async"
+      [routerLink]="['/profileupdate']"
+    >
+      <p class="flex-grow-0 flex-shrink-0 text-base text-left text-white">
+        Edit
+      </p>
+    </div>
+  </div>
+</div>

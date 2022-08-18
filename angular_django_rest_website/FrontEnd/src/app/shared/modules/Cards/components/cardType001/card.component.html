@@ -1,0 +1,38 @@
+<div class="">
+  <div class="flex">
+    <div class="">
+      <a [routerLink]="['/article', article.urlGen]">
+        <img
+          src="https://images.unsplash.com/photo-1518235506717-e1ed3306a89b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80"
+          alt="asdf"
+          class="object-cover object-center w-full h-auto md:max-w-[160px] min-w-[160px] max-h-[260px]"
+        />
+      </a>
+    </div>
+    <div class="px-4">
+      <header>
+        <h1 class="text-3xl font-semibold font-EB-Garamond">
+          <a [routerLink]="['/article', article.urlGen]">
+            {{ article.articleTitle }}
+          </a>
+        </h1>
+      </header>
+      <div class="flex gap-1 text-base">
+        <span class="text-[#dc3545]">{{ article.author.username }}</span>
+        <span>/</span>
+        <div *ngFor="let tag of article.tags; let x = index" class="">
+          <span *ngIf="x !== article.tags.length - 1">{{ tag }},</span>
+          <span *ngIf="x == article.tags.length - 1">{{ tag }}</span>
+        </div>
+      </div>
+      <div>
+        <p class="hidden text-xl font-normal leading-7 md:block w-fit">
+          {{
+            article.articleDescription
+              | limitpipe: { length: 25, cocat: ' [...]' }
+          }}
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

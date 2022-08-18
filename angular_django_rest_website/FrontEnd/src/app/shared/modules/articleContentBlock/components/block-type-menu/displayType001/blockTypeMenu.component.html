@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<div class="flex w-full gap-2 p-1">
+  <button
+    (click)="onAddType(contentTypes.title, false)"
+    class="w-full h-full px-2 py-4 text-white rounded-md bg-cyan-500 focus:bg-cyan-800 focus:outline-none"
+  >
+    title
+  </button>
+
+  <button
+    (click)="onAddType(contentTypes.body, false)"
+    class="w-full h-full px-2 py-4 text-white rounded-md bg-cyan-500 focus:bg-cyan-800 focus:outline-none"
+  >
+    body
+  </button>
+
+  <button
+    (click)="onAddType(contentTypes.image, false)"
+    class="w-full h-full px-2 py-4 text-white rounded-md bg-cyan-500 focus:bg-cyan-800 focus:outline-none"
+  >
+    image
+  </button>
+  <button
+    (click)="onAddType(contentTypes.imageImage, false)"
+    class="w-full h-full px-2 py-4 text-white rounded-md bg-cyan-500 focus:bg-cyan-800 focus:outline-none"
+  >
+    image image
+  </button>
+
+  <button
+    (click)="onAddType(contentTypes.imageBody, false)"
+    class="w-full h-full px-2 py-4 text-white rounded-md bg-cyan-500 focus:bg-cyan-800 focus:outline-none"
+  >
+    image body
+  </button>
+
+  <button
+    (click)="onAddType(contentTypes.bodyImage, false)"
+    class="w-full h-full px-2 py-4 text-white rounded-md bg-cyan-500 focus:bg-cyan-800 focus:outline-none"
+  >
+    body image
+  </button>
+</div>

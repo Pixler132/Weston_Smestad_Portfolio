@@ -1,0 +1,10 @@
+<!DOCTYPE html>
+<div class="">
+  <p>sdhjaksdfhjgsdfgskdfhgaskdhfgkjhsgdf</p>
+  <dz-article-form
+    [initialValues]="initialValues"
+    [isSubmitting]="isSubmitting$ | async"
+    [errors]="backendErrors$ | async"
+    (articleSubmit)="onSubmit($event)"
+  ></dz-article-form>
+</div>

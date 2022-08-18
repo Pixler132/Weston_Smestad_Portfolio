@@ -1,0 +1,168 @@
+<!-- <!DOCTYPE html>
+<div *ngIf="currentUser">
+  <form [formGroup]="form" class="mb-2 text-xl text-slate-300 text-bold">
+    <fieldset class="flex">
+      <div class="mb-6">
+        <label class="block" *ngIf="!edit">
+          {{ currentUser.currentUser.email }}
+        </label>
+        <fieldset class="form-group" *ngIf="edit">
+          <input
+            type="text"
+            class="w-full px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300"
+            placeholder="title"
+            formControlName="newEmail"
+          />
+        </fieldset>
+      </div>
+      <button (click)="onEdit()">
+        <p *ngIf="edit">cancel</p>
+        <p *ngIf="!edit">edit</p>
+      </button>
+      <button (click)="onSubmitEmailUserName()" *ngIf="edit">update</button>
+    </fieldset>
+  </form>
+</div> -->
+<!-- <!DOCTYPE html>
+<div
+  *ngIf="currentUser"
+  class="flex py-3 text-base rounded hover:bg-skin-fill"
+  ng-class="{ open: edit }"
+  [ngClass]="edit ? 'open' : ''"
+>
+  <div class="w-1/4 ml-3 font-medium">Email</div>
+  <div class="flex w-full" *ngIf="!edit">
+    <div class="w-full">
+      <strong class="text-skin-fadded">
+        {{ currentUser.currentUser.email }}
+      </strong>
+    </div>
+    <div class="w-1/6 pr-2 text-right text-skin-links">Edit</div>
+  </div>
+  <div class="flex w-full" *ngIf="edit">
+    <form [formGroup]="form" class="w-full mb-2">
+      <div class="p-2">
+        <div class="flex items-center gap-2 pb-3">
+          <strong>Email</strong>
+          <input
+            type="text"
+            formControlName="newEmail"
+            class="rounded h-7"
+            required
+            email
+            [ngClass]="form.invalid == true ? 'errors' : ''"
+          />
+        </div>
+      </div>
+      <div class="my-3 border"></div>
+      <div class="flex justify-center gap-2">
+        <button
+          [disabled]="form.invalid"
+          (click)="onSubmit(); $event.stopPropagation()"
+          class="p-2 rounded shadow-sm text-skin-muted bg-skin-button-accent hover:bg-skin-button-accent-hover"
+        >
+          Change
+        </button>
+        <button
+          (click)="onCancel(); $event.stopPropagation()"
+          class="shadow-sm text-skin-inverted"
+        >
+          Cancel
+        </button>
+      </div>
+    </form>
+    <div class="w-1/6"></div>
+  </div>
+</div> -->
+<!-- <!DOCTYPE html>
+<div
+  *ngIf="currentUser"
+  class="relative grid grid-cols-4 py-3 text-base rounded hover:bg-skin-base"
+  ng-class="{ open: edit }"
+  [ngClass]="edit ? 'open' : ''"
+>
+  <div class="col-span-1 pl-2">email</div>
+  <strong class="col-span-2" *ngIf="!edit">
+    {{ currentUser.currentUser.email }}
+  </strong>
+  <div class="col-span-1 text-right text-skin-links" *ngIf="!edit">Edit</div>
+  <form [formGroup]="form" class="col-span-2" *ngIf="edit">
+    <input
+      type="text"
+      formControlName="newEmail"
+      class="mb-3 border rounded h-7"
+      required
+      email
+      [ngClass]="form.invalid == true ? 'errors' : ''"
+    />
+    <span>{{ backendErrors$ | async }}asdfsad</span>
+    <div class="flex justify-center gap-2">
+      <button
+        (click)="onSubmit(); $event.stopPropagation()"
+        [disabled]="form.invalid"
+        class="px-2 py-1 rounded-md text-skin-contrast bg-skin-button"
+      >
+        Change
+      </button>
+      <button
+        (click)="onCancel(); $event.stopPropagation()"
+        class="text-skin-links"
+      >
+        Cancel
+      </button>
+    </div>
+  </form>
+</div> -->
+<!DOCTYPE html>
+
+<form
+  *ngIf="currentUser"
+  [formGroup]="form"
+  class="body0"
+  ng-class="{ open: edit }"
+  [ngClass]="edit ? 'open' : ''"
+>
+  <!-- -->
+  <div class="head1">
+    <div class="a2">
+      <div class="w-[81px]"><p class="p1">Email</p></div>
+
+      <p class="f1" *ngIf="!edit">{{ currentUser.currentUser.email }}</p>
+
+      <div class="e1" *ngIf="!edit">
+        Edit
+      </div>
+    </div>
+    <div class="g1" *ngIf="edit"></div>
+  </div>
+
+  <div class="body1" *ngIf="edit">
+    <div class="body2">
+      <div class="a1">
+        <p class="t1">New Email</p>
+        <input
+          type="text"
+          class="i1"
+          formControlName="newEmail"
+          required
+          email
+          [ngClass]="form.invalid == true ? 'errors' : ''"
+        />
+      </div>
+      <div class="gd1"><div class="g2"></div></div>
+    </div>
+    <div class="buttonlist1">
+      <button
+        (click)="onSubmit(); $event.stopPropagation()"
+        class="bs"
+        [disabled]="form.invalid"
+      >
+        Change
+      </button>
+      <button (click)="onCancel(); $event.stopPropagation()" class="bc">
+        Cancel
+      </button>
+    </div>
+    <div class="flex flex-row items-start justify-end w-full px-3"></div>
+  </div>
+</form>

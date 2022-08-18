@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<div class="container mx-10 rounded" *ngIf="form">
+  <div
+    class="p-5 mx-auto my-10 border-t border-b border-l border-r rounded-md shadow-sm"
+  >
+    <div>
+      <div class="p-6 border-b">
+        <!-- <dz-backend-errors
+          *ngIf="errorsProps"
+          [backendErrors]="errorsProps"
+        ></dz-backend-errors> -->
+        <form [formGroup]="form" #forms="ngForm" class="mb-2 text-xl text-bold">
+          <fieldset>
+            <dz-article-form-info
+              [parentFormGroup]="form"
+              [old_tag_list_props]="old_tag_list"
+              (selected_tag_output)="updateTaggings($event)"
+            ></dz-article-form-info>
+            <!--*********************************************** content      ***********************************************-->
+            <div formArrayName="content" class="w-full">
+              <div class="flex content-center w-full text-center">
+                <div class="content-center w-full text-center">
+                  <h1 class="">
+                    Main Article
+                    <p
+                      *ngIf="form.value.content.length === 0"
+                      class="text-sm text-right text-red-600 align-top"
+                    >
+                      article content required
+                    </p>
+                  </h1>
+                </div>
+              </div>
+              <div
+                *ngFor="let block of contentArray.controls; let i = index"
+                formGroupName="{{ i }}"
+                class="px-3 m-2 mx-0 border rounded border-cyan-200"
+              >
+                <div class="flex">
+                  <dz-title-form-type-001
+                    class="w-full"
+                    [parentFormGroup]="block"
+                    *ngIf="block.value.type === contentTypes.title"
+                  ></dz-title-form-type-001>
+
+                  <dz-body-form-type-001
+                    *ngIf="block.value.type === contentTypes.body"
+                    class="w-full"
+                    [parentFormGroup]="block"
+                  ></dz-body-form-type-001>
+
+                  <dz-image-form-type-001
+                    *ngIf="block.value.type === contentTypes.image"
+                    class="w-full"
+                    [parentFormGroup]="block"
+                  ></dz-image-form-type-001>
+
+                  <dz-form-image-image-type-001
+                    *ngIf="block.value.type === contentTypes.imageImage"
+                    class="w-full"
+                    [parentFormGroup]="block"
+                  ></dz-form-image-image-type-001>
+
+                  <dz-form-image-text-type-001
+                    *ngIf="block.value.type === contentTypes.imageBody"
+                    class="w-full"
+                    [parentFormGroup]="block"
+                  ></dz-form-image-text-type-001>
+
+                  <dz-form-text-image-type-001
+                    *ngIf="block.value.type === contentTypes.bodyImage"
+                    class="w-full"
+                    [parentFormGroup]="block"
+                  ></dz-form-text-image-type-001>
+
+                  <div class="grid w-4 grid-cols-1 pt-2">
+                    <button
+                      class="row-span-1 pt-1 text-center transition duration-150 ease-in-out hover:text-green-400"
+                      data-bs-toggle="tooltip"
+                      data-bs-placement="top"
+                      title="Move section up"
+                      (click)="move(-1, i)"
+                      *ngIf="i !== 0"
+                    >
+                      <mat-icon>
+                        arrow_upward
+                      </mat-icon>
+                    </button>
+                    <button
+                      (click)="onDelete(i)"
+                      class="row-span-1 pt-1 text-center hover:text-red-600"
+                      data-bs-toggle="tooltip"
+                      data-bs-placement="top"
+                      title="Delete section"
+                    >
+                      <mat-icon>delete_forever</mat-icon>
+                    </button>
+                    <button
+                      class="row-span-1 pt-1 text-center transition duration-150 ease-in-out hover:text-green-400"
+                      data-bs-toggle="tooltip"
+                      data-bs-placement="top"
+                      title="Move section down"
+                      (click)="move(1, i)"
+                      *ngIf="i !== this.form.value.content.length - 1"
+                    >
+                      <mat-icon>
+                        arrow_downward
+                      </mat-icon>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <fieldset>
+              <dz-block-type-menu
+                (newItemEvent)="onAddType($event)"
+              ></dz-block-type-menu>
+              <div class="flex">
+                <button
+                  type="submit"
+                  class="content-center px-2 py-4 text-white bg-green-500 rounded-md disabled:bg-red-400 focus:bg-green-600 focus:outline-none"
+                  (click)="onSubmit()"
+                  [disabled]="
+                    form.value.content.length === 0 ||
+                    form.value.articleTitle === ''
+                  "
+                >
+                  Publish article
+                </button>
+              </div>
+            </fieldset>
+          </fieldset>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- <div>
+  <dz-article-preview [parentFormGroup]="form.value"></dz-article-preview>
+</div> -->

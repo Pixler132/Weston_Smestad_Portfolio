@@ -1,0 +1,89 @@
+<div class="blog-card" *ngIf="indexProps % 2 !== 0">
+  <div class="meta">
+    <div
+      *ngIf="storyBookTest"
+      class="photo"
+      style="
+        background-image: url(https://storage.googleapis.com/chydlx/codepen/blog-cards/image-1.jpg);
+      "
+    ></div>
+    <div
+      *ngIf="!storyBookTest"
+      class="photo"
+      style="background-image: url({{ imageUrl }})"
+    ></div>
+    <ul class="details">
+      <li class="author">
+        <a href="#">{{ article.author.username }}</a>
+      </li>
+      <li class="date">{{ date }}</li>
+      <li class="tags flex">
+        <ul *ngFor="let tag of article.tags" class="flex">
+          <li class="flex">
+            <a
+              [routerLink]="['/feed', 'tag', tag]"
+              routerLinkActive="active"
+              [routerLinkActiveOptions]="{ exact: true }"
+              class="flex"
+            >
+              {{ tag }}
+            </a>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+  <div class="description">
+    <h1>{{ article.articleTitle }}</h1>
+    <p>
+      {{ article.articleDescription }}
+    </p>
+    <p class="read-more">
+      <a [routerLink]="['/article/', article.urlGen]">Read More</a>
+    </p>
+  </div>
+</div>
+<div class="blog-card alt" *ngIf="indexProps % 2 === 0">
+  <div class="meta">
+    <div
+      *ngIf="storyBookTest"
+      class="photo"
+      style="
+        background-image: url(https://storage.googleapis.com/chydlx/codepen/blog-cards/image-1.jpg);
+      "
+    ></div>
+    <div
+      *ngIf="!storyBookTest"
+      class="photo"
+      style="background-image: url({{ imageUrl }})"
+    ></div>
+    <ul class="details">
+      <li class="author">
+        <a href="#">{{ article.author.username }}</a>
+      </li>
+      <li class="date">{{ date }}</li>
+      <li class="tags">
+        <ul *ngFor="let tag of article.tags" class="flex">
+          <li class="flex">
+            <a
+              [routerLink]="['/feed', 'tag', tag]"
+              routerLinkActive="active"
+              [routerLinkActiveOptions]="{ exact: true }"
+            >
+              {{ tag }}
+            </a>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+  <div class="description">
+    <h1>{{ article.articleTitle }}</h1>
+    <p>
+      {{ article.articleDescription }}
+    </p>
+    <p class="read-more">
+      <a [routerLink]="['/article/', article.urlGen]">Read More</a>
+    </p>
+  </div>
+</div>

@@ -1,0 +1,560 @@
+
+	Simple Registion Email verification
+	Comment System
+	Private Blog - Articles - Favorite System - Favorite Count 
+	- ViewCount(Request Count) tested against IP
+	- minimalistic Taging used for organization of types of Articles, 
+	Seperate Login for SuperUsers
+	Main User Seperate Login
+	- dark and light mode
+	- Honey Pot  on /admin to ban users trying to access admin
+	- AdminPort Private 
+	
+	Pages:
+	Register Page
+	Login Page
+	Article Page
+	Article List Page
+	~Logistic page which showcases viewcounts pages Created Once numbers are higher!
+	
+	Article List Page Coresponding with tags
+	Profile Page - All liked and favorited articles with article all listed out
+	Profile Settings Page - Images, username,change password... etc
+	Article Creation Page
+	Edit Article Page
+	Redirect to Check Email Page Resend Validation email or change Email
+	(if you try to login with unverified email it goes to Redirect page)
+	
+	
+	DataBase
+	Premade User Model
+	Profile Model - Dark light mode
+	Article Model
+	Tag Model
+	Favorite Model
+	
+	All errors follow this format
+	ServerReply:
+	{
+	 	errors:["...",...]
+	} 
+	
+	--------------------------------------------
+	Registration Json
+	/api/usermanagement/register/
+	
+	Post
+	{
+	 "user":{
+	 	"firstName": String
+	 	"lastName" : String | Null
+	 	"userName" : String !unique
+	 	"password" : String !length requirments(6), 
+	 	"email" : String !validated, unique
+	 }
+	}
+	
+	ServerReply
+	{
+	 "Server reply whether information is valid or not if valid just 
+	  200 ok"
+	}
+	
+	or Error of each invalid instance 
+	{
+		"errors":[...] ex. ["Invalid Username","Invalid Email"] 
+	}
+	
+	Login
+	/api/usermanagement/login/
+	Post
+	{
+		"user":{
+	 		"userObject" : String | Null ### can take either username or email V!!
+	 		"password" : String 
+	 	}
+	}
+	
+	ServerReply
+	{
+		currentUser:{
+			"id" : int
+			"userName": String
+			"image" : String/Blob
+			"firstName" : String
+			"lastName" : String | Null
+			"email" : String
+			"joinDate" : Date
+			"token" : token.key
+			"lightMode" : Bool
+			"publicFavorite" : Bool	
+			"admin": boolean                                        //Changes
+			"owner": boolean										//CHANGES
+		}
+	}
+	
+	
+	Logout
+	/api/usermanagement/logout/
+	POST
+	
+	
+	autoLogin
+	/api/usermanagement/autologin/
+	GET
+	{
+			"token" : token.key
+	}
+	
+	
+	
+	Singular Article
+	endPoints
+	
+	
+	POST Creation article:
+	IS AUTHENTICATED AND HAS RIGHTS
+	api/article/
+	
+	POST
+	{
+        "article":{
+            "tags"        : []  String List
+			"articleImage" : String	| null                  //CHANGES
+			"articleDescription": String | null				//CHANGES
+			"articleTitle" : String							//CHANGES
+            
+			"content":[{
+                "title"       : String | Null
+                "body"        : String | Null
+                "type"        : int 
+                "image"       : string | Null
+				"position"	  : int
+				"customObject": Boolean
+                },
+                {...},
+                ]
+            }
+    }
+	
+	}
+	
+	ServerReply
+	{
+        "article":{
+            "id"          : int
+		
+    }
+
+
+	get Article
+	api/article/<id>/
+	
+	ServerReply
+	{
+        "article":{
+            "id"              : int
+            content:[
+			{
+                "title"       : String | NUll
+                "body"        : String | Null
+                "type"        : int
+                "image"       : string | Null
+				"customObject": Boolean
+				"position"    : int
+            },
+                {...},]
+            "author"      : {
+				authorId : int						//CHANGES
+				username: String					//CHANGES
+				profileImg : String					//CHANGES
+			}
+			"articleImage" : String	| null                  //CHANGES
+			"articleDescription: String | null				//CHANGES
+			"articleTitle" : String							//CHANGES
+            "creationDate": Date
+            "tags"        : []  String List
+            "favorited" : Bool
+            "favoriteCount" : Int
+        }
+    }
+	
+	PUT
+	api/article/edit/<id>/ # Headers check user calling token matches article creator
+	
+	PUT
+	{
+        "article":{
+			"articleImage" : String	| null                  //CHANGES
+			"articleDescription: String | null				//CHANGES
+			"articleTitle : String							//CHANGES
+            "author"      : String
+            "tags"        : []  String List
+            content:[{
+                "title"       : String | Null
+                "body"        : String | Null
+                "type"        : int
+                "image"       : String | Null
+                "customObject": Boolean
+                },
+                {...},
+                ]
+            }
+
+    }
+	
+	ServerReply
+	{
+        "article":{
+            "id"          : int
+    }
+	
+	
+	
+	delete
+	api/article/<id>/ # Headers check user calling token matches article creator
+	
+	ServerReply
+	{
+	Response 201 created
+	}
+	or error
+	
+	
+	ArticleListing
+	GET
+	api/article/listArticle/.  #api/listArticle/?limit=5&offset=10
+	GET
+	api/article/listArticle/tags/?tags=tag1,tag2,tag3,tag4&limit=5&offset=0      //CHANGED
+	GET Boolean profile Favorited check                         //CHANGED
+	api/article/listArticle/favorite/<id>/
+	#api/listArticle/favorite/?limit=5&offset=10
+	#Only visible to User or SuperUser calling data
+	
+	SERVER REPLY
+	
+	{
+		"feed" :{
+			"articles":[
+				{
+				"id"          : int
+				"author"      : {
+					authorId : int						//CHANGES
+					username: String					//CHANGES
+					profileImg : String					//CHANGES
+				}
+				"creationDate": Date # String
+				"favorited" : Bool
+				"favoriteCount" : Int
+				"tags"        : []  String List
+				"articleImage" : String	| null                  //CHANGES
+				"articleDescription: String | null				//CHANGES
+				"articleTitle : String							//CHANGES
+				},{...}
+			],
+			"articleCount" : Int
+		}
+		
+	}
+	
+	GET
+	api/article/<article_id>/comments/
+	#api/article/2/comments/?limit=5&offset=10 
+	
+	Server Reply
+	{
+		"commentFeed" :{
+			"comments" : [{  # List of comments
+					author:{
+						authorId : int						//CHANGES
+						username: String					//CHANGES
+						profileImg : String					//CHANGES
+					}
+					"comment_id"   : int
+					"title"		   : String | Null	
+					"content"      : String
+					"creationDate" : Date
+					"replys:"      : [*recursive object]     //CHANGES
+				},
+				{...}]
+				"commentCount" : Int
+			}
+	}
+	
+	
+	
+	
+	PUT
+	api/article/<article_id>/comment/<comment_id>/
+	# api/article/2/comment/3/
+	VERIFY USER FROM AUTH TOKEN
+	Server Receive
+	{ 
+		"title"        : String | Null
+		"content"      : String
+		
+		"reply" :{
+			"replyId" : int
+		}
+		
+	}
+	
+	
+	Server Reply
+	{
+		"commentFeed" :{
+			"comments" : [{  # List of comments
+					author:{
+						authorId   : int						//CHANGES
+						username   : String					    //CHANGES
+						profileImg : String					    //CHANGES
+					}
+					"comment_id"   : int
+					"content"      : String
+					"creationDate" : Date
+					"replies : [
+						{  # List of comments
+						author:{
+							authorId    : int						//CHANGES
+							username    : String					//CHANGES
+							profileImg  : String					//CHANGES
+						}
+						"reply_id"   	: int
+						"content"       : String
+						"creationDate"  : Date
+						},
+						{...}
+					]
+				},
+				{...}]
+				"commentCount" : Int
+			}
+	}
+
+	POST
+	api/article/comment/<int:article_id>/
+	payLoad # verified user only
+	Server Receive
+	{
+		"comment" : {
+			"content" : String
+		}
+		
+		"reply" :{
+			"commentId" : int
+		}
+		
+	}
+	
+	Server Reply
+	{
+		"commentFeed" :{
+			"comments" : [{  # List of comments
+					author:{
+						authorId   : int						//CHANGES
+						username   : String					    //CHANGES
+						profileImg : String					    //CHANGES
+					}
+					"comment_id"   : int
+					"content"      : String
+					"creationDate" : Date
+					"replies : [
+						{  # List of comments
+						author:{
+							authorId    : int						//CHANGES
+							username    : String					//CHANGES
+							profileImg  : String					//CHANGES
+						}
+						"reply_id"   	: int
+						"content"       : String
+						"creationDate"  : Date
+						},
+						{...}
+					]
+				},
+				{...}]
+				"commentCount" : Int
+			}
+	}
+	
+	DELETE
+	api/article/<article_id>/comment/<comment_id>/
+	# api/article/2/comment/3/
+	VERIFY USER FROM AUTH TOKEN
+	SERVER REPLY 200
+	{
+		"reply" :{
+			"replyId" : int
+		}
+	}	
+
+	Put Verified
+	api/edit/profile/
+	Server Receives
+	{
+		profile:{
+			username       : String
+			image          : String
+			bio            : String
+			lightmode      : Bool
+			publicFavorite : bool					//CHANGES
+		}
+	
+	}
+	SERVER_REPLY 200
+	
+	Get chack Verified
+	api/profile/<id>/
+	{
+		profile:{
+			image          : String
+			bio            : String
+			lightmode      : Bool | null       	    //CHANGES
+			publicFavorite : bool					//CHANGES
+		}
+	}
+	
+	# Follower System
+	Post Verfied User 
+	api/follower/<id>/
+	Server Reply 200 sucesss or Failure
+	
+	
+	DELETE Verified User
+	api/follower/<id>/
+	Server Reply 200 sucesss or Failure
+
+	GET User Boolean check whether public to view
+	api/following/<id>/
+	Server Reply 
+	{
+		"following" : [
+			{
+				username : String
+				image    : String
+				bio      : String	
+			},
+			{...},
+		]
+	}
+	
+	#Search Headlines and return list of Articles endpoint
+	#hold an array of comments reply system
+	#likes and dislikes comments change 
+	#friends list
+	
+	Put Change Profile
+	api/UserManagement/profileUpdate/ // any one profile line is acceptable
+	{
+		"profile" : {
+			image          : String
+			bio            : String
+			lightMode      : Bool
+			publicFavorite : Bool
+			firstName      : String
+			lastName       : String
+		}
+		
+	}
+	Reply :
+	{
+		"accepted",
+	}
+	
+	
+	Get Profile
+	api/UserManagement/profile/<str:username>/
+	Reply :
+	{
+		"profile" : {
+			image          : String
+			bio            : String			
+			publicFavorite : Bool
+			firstName      : String
+			lastName       : String
+			creationDate   : Date
+			userName       : String
+		}
+	}
+	
+	
+	
+	# will require matching token
+	Put api/UserManagment/user/<int:user_id>/  if email different email
+	{
+		"user":{
+			userName           : String // could not exist
+			email              : String // could not exist
+		}
+	}
+	ServerReply  
+	{
+	 200 ok
+	}
+	
+	# will require matching token
+	Put api/UserManagement/user/password/<int:user_id>/
+	{
+		"user":{
+			original_password  : String // could not exist
+			password           : String // could not exist
+		}
+	}
+	ServerReply  
+	{
+	 200 ok
+	}
+	
+	Footer # make a put request
+	footer:{
+		mainImg: string
+		altImg: string
+		mainTitle: string
+		altTitle: string
+		mainBody: string
+		altBody: string
+		socialLink: []
+		 }
+	}
+
+	{
+		mediaType:string
+		socialUrl: string  
+	}
+	
+	Header
+	{
+		title:string
+		img: string
+		linkNames: string[] # max three
+    }
+	
+"Modify profile
+{
+	user: {
+		userName: { 
+		  newUserName: string
+		} | null
+		email:  { 
+		  newEmail: string
+		} | null
+		"firstname : {
+			newFirstName : string
+		} | null
+		"lastname : {
+			newLastName : string
+		} | null
+		password:  {
+		  newPassword: string
+		  confirmPassword: string
+		  oldPassword: string
+		} | null
+		bio : {
+			newBio : string
+		} | null
+		image:{
+			newImage : string *base64* 
+		} | null
+	 }
+}
+

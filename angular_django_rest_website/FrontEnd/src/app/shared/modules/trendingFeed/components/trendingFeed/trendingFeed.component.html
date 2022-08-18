@@ -1,0 +1,71 @@
+<!-- <body id="trending" class="pt-6 mt-8 lg:border-t ml-7">
+  <h2 class="text-xl font-medium text-red-700 uppercase font-Montserrat">
+    Trending
+  </h2>
+  <div class="flex">
+    <div class="relative flex w-full">
+      <div *ngFor="let article of trendingFeed$ | async; let i = index">
+        <dz-card-type-008
+          *ngIf="i == 0"
+          [article]="article"
+          class="w-full md:pb-0"
+        ></dz-card-type-008>
+      </div>
+    </div>
+    <div>
+      <div
+        class="w-full h-full pl-3"
+        *ngFor="let article of trendingFeed$ | async; let i = index"
+      >
+        <dz-card-type-007 [article]="article"></dz-card-type-007>
+      </div>
+    </div>
+  </div>
+</body> -->
+<div
+  class="flex w-full flex-col justify-start items-start self-stretch flex-grow-0 flex-shrink-0 h-[57px] relative gap-px"
+  *ngIf="home"
+>
+  <p
+    class="flex-grow-0 flex-shrink-0 w-[248px] text-[32px] font-bold text-left text-[#e91616]"
+  >
+    TRENDING
+  </p>
+  <div
+    class="w-full self-stretch flex-grow-0 flex-shrink-0 h-0.5 bg-[#d9d9d9]"
+  ></div>
+</div>
+<div
+  class="flex flex-col lg:flex-row justify-start items-start self-stretch flex-grow-0 flex-shrink-0 relative gap-[9px] pb-5 h-full"
+  *ngIf="trendingFeed"
+>
+  <dz-card-type-008
+    [article]="trendingFeed[0]"
+    class="w-full h-[504.943px] md:pb-0"
+  ></dz-card-type-008>
+
+  <div
+    class="flex flex-col justify-start items-center flex-grow relative gap-[9px] w-full"
+  >
+    <dz-card-type-007
+      [article]="trendingFeed[1]"
+      class="w-full"
+    ></dz-card-type-007>
+    <div
+      *ngIf="trendingFeed[1]"
+      class="self-stretch flex-grow-0 flex-shrink-0 h-0.5 bg-[#d9d9d9]"
+    ></div>
+    <dz-card-type-007
+      [article]="trendingFeed[2]"
+      class="w-full"
+    ></dz-card-type-007>
+    <div
+      *ngIf="trendingFeed[2]"
+      class="self-stretch flex-grow-0 flex-shrink-0 h-0.5 bg-[#d9d9d9]"
+    ></div>
+    <dz-card-type-007
+      [article]="trendingFeed[3]"
+      class="w-full"
+    ></dz-card-type-007>
+  </div>
+</div>

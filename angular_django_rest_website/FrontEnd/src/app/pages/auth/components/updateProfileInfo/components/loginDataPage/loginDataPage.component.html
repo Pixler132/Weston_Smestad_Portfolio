@@ -1,0 +1,26 @@
+<div class="overflow-visible" (click)="onEdit('username')">
+  <dz-username-form
+    class="w-full overflow-visible"
+    [edit]="edit.username"
+    [currentUser]="currentUser"
+    (cancelEdit)="onReset()"
+  ></dz-username-form>
+</div>
+<div class="w-full h-[1px] my-1 bg-skin-fill"></div>
+<div class="overflow-visible" (click)="onEdit('email')">
+  <dz-email-form
+    class="w-full overflow-visible"
+    [edit]="edit.email"
+    [currentUser]="currentUser"
+    (cancelEdit)="onReset()"
+  ></dz-email-form>
+</div>
+<div class="w-full h-[1px] my-1 bg-skin-fill"></div>
+<div class="overflow-visible" (click)="onEdit('password')">
+  <dz-password-form
+    class="w-full overflow-visible"
+    [edit]="edit.password"
+    [currentUser]="currentUser"
+    (cancelEdit)="onReset()"
+  ></dz-password-form>
+</div>

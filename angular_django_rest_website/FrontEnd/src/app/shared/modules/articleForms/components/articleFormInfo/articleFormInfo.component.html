@@ -1,0 +1,118 @@
+<div [formGroup]="parentFormGroup" class="w-full">
+  <div class="flex content-center w-full text-center">
+    <h1 class="content-center w-full text-center">Card Data</h1>
+  </div>
+  <div class="border-2">
+    <div class="mb-6">
+      <label class="block"></label>
+      <fieldset class="form-group">
+        <input
+          type="text"
+          class="w-full px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300"
+          placeholder="title"
+          formControlName="articleTitle"
+        />
+      </fieldset>
+    </div>
+    <div class="mb-6">
+      <label class="block">
+        Description
+      </label>
+      <fieldset class="form-group">
+        <textarea
+          type="text"
+          class="w-full px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300"
+          placeholder="Description"
+          formControlName="articleDescription"
+        ></textarea>
+      </fieldset>
+    </div>
+    <div class="mb-6">
+      <!--  -->
+      <!-- <div
+        class="flex flex-wrap items-end justify-center space-x-2"
+        *ngIf="selected_tag_list"
+      >
+        <span
+          *ngFor="let item of selected_tag_list; let i = index"
+          class="flex text-sm font-semibold text-gray-500 transition duration-300 bg-green-200 rounded-full cursor-pointer align-center active:bg-gray-300 ease w-max"
+          (click)="removeTag(i, item)"
+        >
+          <span class="flex items-center px-3 py-2">
+            {{ item }}
+          </span>
+          <button class="bg-transparent hover focus:outline-none">
+            <svg
+              aria-hidden="true"
+              focusable="false"
+              data-prefix="fas"
+              data-icon="times"
+              class="w-3 mr-4"
+              role="img"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 352 512"
+            >
+              <path
+                fill="currentColor"
+                d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z"
+              ></path>
+            </svg>
+          </button>
+        </span>
+      </div> -->
+      <!--  -->
+      <!-- <div
+        class="flex flex-wrap items-end justify-center space-x-2"
+        *ngIf="available_tag_list"
+      >
+        <span
+          *ngFor="let item of available_tag_list; let i = index"
+          class="flex text-sm font-semibold text-gray-500 transition duration-300 bg-gray-200 rounded-full cursor-pointer align-center active:bg-gray-300 ease w-max"
+          (click)="addTag(item, i)"
+        >
+          <span class="flex items-center px-3 py-2">
+            {{ item }}
+          </span>
+          <button class="bg-transparent hover focus:outline-none">
+            <svg
+              aria-hidden="true"
+              focusable="false"
+              data-prefix="fas"
+              data-icon="times"
+              class="w-3 mr-4"
+              role="img"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 352 512"
+            >
+              <path
+                fill="currentColor"
+                d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z"
+              ></path>
+            </svg>
+          </button>
+        </span>
+      </div> -->
+      <dz-tag-selector
+        [old_tag_list_props]="old_tag_list_props"
+        (selected_tag_output)="removeTag($event)"
+      ></dz-tag-selector>
+      <!--  -->
+      <!-- <fieldset class="form-group">
+        <input
+          type="text"
+          class="w-full px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300"
+          placeholder="Enter available_tag_list"
+          formControlName="available_tag_list"
+        />
+      </fieldset> -->
+    </div>
+    <div class="flex justify-center">
+      <div class="">
+        <h3 class="text-center">Image</h3>
+        <dz-article-image-form
+          [parentFormGroup]="parentFormGroup"
+        ></dz-article-image-form>
+      </div>
+    </div>
+  </div>
+</div>

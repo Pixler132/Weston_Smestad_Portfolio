@@ -1,0 +1,681 @@
+<div
+  class="fixed z-40 flex justify-between w-full text-skin-base bg-skin-base md:hidden"
+>
+  <!-- logo -->
+  <img src="assets/images/tDezeonic.png" alt="" class="z-50 h-8 pl-6 my-5" />
+
+  <!-- mobile menu button -->
+  <button
+    class="p-4 mobile-menu-button focus:outline-none focus:bg-gray-700"
+    (click)="menuToggle()"
+    #mobileMenuButton
+  >
+    <svg
+      class="w-5 h-5"
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke="currentColor"
+    >
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        d="M4 6h16M4 12h16M4 18h16"
+      />
+    </svg>
+  </button>
+</div>
+<!--
+<div class="fixed z-40 md:br-52">
+  <div
+    class="fixed transition duration-200 ease-in-out transform -translate-x-full bg-skin-fill w-52 sidebar md:relative md:translate-x-0"
+    [ngClass]="isOpen ? '' : ''"
+    #sidebar
+  >
+    <nav>
+      <aside
+        class="h-screen text-gray-900 transition duration-75 rounded-lg w-52"
+        aria-label="Sidebar"
+      >
+        <div class="h-full px-3 py-4 overflow-y-auto rounded bg-skin-base">
+          <ul class="space-y-2">
+            <li>
+              <a routerLink="/" class="my-8">
+                <img
+                  src="assets/images/Dezeonic-logo.png"
+                  alt=""
+                  class="pt-7"
+                />
+              </a>
+            </li>
+            <li>
+              <a
+                routerLink="/"
+                routerLinkActive="active"
+                [routerLinkActiveOptions]="{ exact: true }"
+                class="flex items-center p-2 text-base font-normal"
+              >
+                <svg
+                  class=""
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path d="M2 10a8 8 0 018-8v8h8a8 8 0 11-16 0z"></path>
+                  <path d="M12 2.252A8.014 8.014 0 0117.748 8H12V2.252z"></path>
+                </svg>
+                <span class="ml-3">Home</span>
+              </a>
+            </li>
+            <li>
+              <a
+                type="button"
+                class="flex items-center w-full p-2 text-base font-normal transition duration-75 rounded-lg cursor-pointer group"
+                aria-controls="dropdown-example"
+                data-collapse-toggle="dropdown-example"
+                (click)="isOpen = !isOpen"
+              >
+                <svg
+                  class="w-6 h-6 text-gray-500 transition duration-75 "
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M10 2a4 4 0 00-4 4v1H5a1 1 0 00-.994.89l-1 9A1 1 0 004 18h12a1 1 0 00.994-1.11l-1-9A1 1 0 0015 7h-1V6a4 4 0 00-4-4zm2 5V6a2 2 0 10-4 0v1h4zm-6 3a1 1 0 112 0 1 1 0 01-2 0zm7-1a1 1 0 100 2 1 1 0 000-2z"
+                    clip-rule="evenodd"
+                  ></path>
+                </svg>
+                <span
+                  class="flex-1 ml-3 text-left whitespace-nowrap"
+                  sidebar-toggle-item
+                >
+                  Categories
+                </span>
+
+                <svg
+                  sidebar-toggle-item
+                  [class]="isOpen ? 'open' : 'close'"
+                  class="w-6 h-6"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                    clip-rule="evenodd"
+                  ></path>
+                </svg>
+              </a>
+              <div *ngIf="isOpen" [@dropDownMenu]>
+                <ul
+                  id="dropdown-example"
+                  class="hidden py-2 space-y-2"
+                  class="menu-item"
+                >
+                  <li *ngFor="let tag of category" class="">
+                    <a
+                      [routerLink]="['/feed', 'tag', tag]"
+                      class="flex items-center w-full p-2 text-base font-normal capitalize rounded-lg cursor-pointer group pl-11"
+                    >
+                      <span class="cursor-pointer hover:underline">
+                        {{ tag }}
+                      </span>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </li>
+
+            <li>
+              <a
+                routerLink="/404"
+                class="flex items-center p-2 text-base font-normal"
+              >
+                <svg
+                  class=""
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M8.707 7.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l2-2a1 1 0 00-1.414-1.414L11 7.586V3a1 1 0 10-2 0v4.586l-.293-.293z"
+                  ></path>
+                  <path
+                    d="M3 5a2 2 0 012-2h1a1 1 0 010 2H5v7h2l1 2h4l1-2h2V5h-1a1 1 0 110-2h1a2 2 0 012 2v10a2 2 0 01-2 2H5a2 2 0 01-2-2V5z"
+                  ></path>
+                </svg>
+                <span class="flex-1 ml-3 whitespace-nowrap">Inbox 404</span>
+                <span
+                  class="inline-flex items-center justify-center w-3 h-3 p-3 ml-3 text-sm font-medium text-blue-600 bg-blue-200 rounded-full dark:bg-blue-900 dark:text-blue-200"
+                >
+                  3
+                </span>
+              </a>
+            </li>
+            <li *ngIf="isLoggedIn$ | async">
+              <a
+                [routerLink]="
+                  '/profile/' +
+                  (currentUser$ | async)?.currentUser?.userName +
+                  '/'
+                "
+                class="flex items-center p-2 text-base font-normal"
+              >
+                <img
+                  [src]="baseMedia + (currentUser$ | async)?.currentUser?.image"
+                  class="w-6 h-6 rounded-full"
+                  alt=""
+                />
+
+                <span class="flex-1 ml-3 whitespace-nowrap">
+                  {{ (currentUser$ | async)?.currentUser?.userName }}
+                </span>
+              </a>
+            </li>
+            <li *ngIf="isLoggedIn$ | async">
+              <a
+                class="flex items-center p-2 text-base font-normal"
+                (click)="onLogout()"
+              >
+                <svg
+                  class=""
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M3 3a1 1 0 00-1 1v12a1 1 0 102 0V4a1 1 0 00-1-1zm10.293 9.293a1 1 0 001.414 1.414l3-3a1 1 0 000-1.414l-3-3a1 1 0 10-1.414 1.414L14.586 9H7a1 1 0 100 2h7.586l-1.293 1.293z"
+                    clip-rule="evenodd"
+                  ></path>
+                </svg>
+                <span class="flex-1 ml-3 whitespace-nowrap">Logout</span>
+              </a>
+            </li>
+            <li *ngIf="isAnonymous$ | async">
+              <a
+                routerLink="/login"
+                class="flex items-center p-2 text-base font-normal"
+              >
+                <svg
+                  class=""
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M3 3a1 1 0 00-1 1v12a1 1 0 102 0V4a1 1 0 00-1-1zm10.293 9.293a1 1 0 001.414 1.414l3-3a1 1 0 000-1.414l-3-3a1 1 0 10-1.414 1.414L14.586 9H7a1 1 0 100 2h7.586l-1.293 1.293z"
+                    clip-rule="evenodd"
+                  ></path>
+                </svg>
+                <span class="flex-1 ml-3 whitespace-nowrap">Sign In</span>
+              </a>
+            </li>
+            <li *ngIf="isAnonymous$ | async">
+              <a
+                routerLink="/register"
+                class="flex items-center p-2 text-base font-normal"
+              >
+                <svg
+                  class=""
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M5 4a3 3 0 00-3 3v6a3 3 0 003 3h10a3 3 0 003-3V7a3 3 0 00-3-3H5zm-1 9v-1h5v2H5a1 1 0 01-1-1zm7 1h4a1 1 0 001-1v-1h-5v2zm0-4h5V8h-5v2zM9 8H4v2h5V8z"
+                    clip-rule="evenodd"
+                  ></path>
+                </svg>
+                <span class="flex-1 ml-3 whitespace-nowrap">Sign Up</span>
+              </a>
+            </li>
+          </ul>
+          <div class="my-2 border-b"></div>
+          <nav id="searchBar">
+            <div class="flex justify-center mt-8">
+              <div class="mb-3 xl:w-96">
+                <div
+                  class="relative flex flex-wrap items-stretch w-full mb-4 input-group"
+                >
+                  <input
+                    type="search"
+                    class="form-control relative flex-auto min-w-0 block w-[88px] h-[45px] px-3 py-1.5 text-base font-normal text-skin-base bg-white bg-clip-padding border rounded-l-md border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+                    placeholder="Search"
+                    aria-label="Search"
+                    aria-describedby="button-addon3"
+                  />
+                  <button
+                    class="inline-block px-6 py-2 text-xs font-medium leading-tight uppercase transition duration-150 ease-in-out border-2 border-blue-600 bg-skin-base rounded-r-md btn hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0"
+                    type="button"
+                    id="button-addon3"
+                  >
+                    Search
+                  </button>
+                </div>
+              </div>
+            </div>
+          </nav>
+          <div class="my-2 border-b"></div>
+          <nav id="mediaLinks">
+            <div>
+              <ul class="flex gap-2">
+                <li>
+                  <a href="https://www.twitch.tv/dezeonic" target="_blank">
+                    <span>
+                      <img
+                        src="assets/mediaSvg/Twitch_Black_circle_v2.svg"
+                        alt=""
+                        class="w-7"
+                      />
+                    </span>
+                  </a>
+                </li>
+                <li>
+                  <a href="">
+                    <span>
+                      <img
+                        src="assets/mediaSvg/facebook_Black_circle_v2.svg"
+                        alt=""
+                        class="w-7"
+                      />
+                    </span>
+                  </a>
+                </li>
+                <li>
+                  <a href="https://twitter.com/Dezeonic" target="_blank">
+                    <span>
+                      <img
+                        src="assets/mediaSvg/Twitter_Black_circle_v2.svg"
+                        alt=""
+                        class="w-7"
+                      />
+                    </span>
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="https://www.youtube.com/channel/UCexuR3HKn6mr1q78I0-eiXA"
+                    target="_blank"
+                  >
+                    <span>
+                      <img
+                        src="assets/mediaSvg/Youtube_Black_circle_v2.svg"
+                        alt=""
+                        class="w-7"
+                      />
+                    </span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </nav>
+        </div>
+        <div class="absolute bottom-7 left-5">
+          <span>©2022 Dezonic LLC</span>
+        </div>
+      </aside>
+    </nav>
+  </div>
+  <div
+    class="z-50 w-screen h-screen md:hidden"
+    (click)="menuToggle()"
+    *ngIf="menuIsOpen"
+  >
+  </div>
+</div>
+ -->
+
+<div
+  class="z-40 md:br-52 h-screen fixed flex flex-col justify-start items-center w-52 gap-[59px] pt-7 pb-[31px] bg-[#f3f3f3] md:translate-x-0 transition duration-200 ease-in-out transform -translate-x-full"
+  [ngClass]="isOpen ? '' : ''"
+  #sidebar
+>
+  <img
+    routerLink="/"
+    src="assets/images/Dezeonic-logo.png"
+    class="flex-grow-0 w-52 h-[95px] object-cover"
+  />
+  <div
+    class="flex flex-col items-start justify-between flex-grow-0 h-full pb-[26px]"
+    aria-label="Sidebar"
+  >
+    <div class="flex flex-col items-start justify-start flex-grow-0 gap-5">
+      <div
+        class="flex justify-start items-center flex-grow-0 relative gap-[7px]"
+        routerLink="/"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }"
+      >
+        <svg
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          class="relative flex-grow-0 w-6 h-6"
+          preserveAspectRatio="xMidYMid meet"
+        >
+          <path
+            d="M2.40002 12.0004C2.40002 9.45431 3.41145 7.01251 5.2118 5.21217C7.01215 3.41182 9.45395 2.40039 12 2.40039V12.0004H21.6C21.6 14.5465 20.5886 16.9883 18.7882 18.7886C16.9879 20.589 14.5461 21.6004 12 21.6004C9.45395 21.6004 7.01215 20.589 5.2118 18.7886C3.41145 16.9883 2.40002 14.5465 2.40002 12.0004Z"
+            fill="black"
+          ></path>
+          <path
+            d="M14.4 2.70215C16.0604 3.1323 17.5755 3.99869 18.7883 5.21149C20.0011 6.4243 20.8675 7.9394 21.2976 9.59975H14.4V2.70215Z"
+            fill="black"
+          ></path>
+        </svg>
+        <p class="flex-grow-0 w-[82px] h-[19px] text-base text-left text-black">
+          Home
+        </p>
+      </div>
+      <div
+        class="flex flex-col items-start justify-center flex-grow-0"
+        aria-controls="dropdown-example"
+        data-collapse-toggle="dropdown-example"
+        (click)="isOpen = !isOpen"
+      >
+        <div
+          class="flex justify-start items-center flex-grow-0 relative gap-[7px]"
+        >
+          <svg
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            class="relative flex-grow-0 w-6 h-6"
+            preserveAspectRatio="xMidYMid meet"
+          >
+            <path
+              fill-rule="evenodd"
+              clip-rule="evenodd"
+              d="M12 2.40039C10.727 2.40039 9.50606 2.9061 8.60588 3.80628C7.70571 4.70645 7.2 5.92735 7.2 7.20039V8.40039H6C5.70458 8.40037 5.41953 8.50932 5.19945 8.70638C4.97936 8.90344 4.83969 9.17476 4.8072 9.46839L3.6072 20.2684C3.58864 20.4361 3.60565 20.6058 3.65713 20.7665C3.70861 20.9272 3.7934 21.0752 3.90596 21.2009C4.01852 21.3266 4.15633 21.4272 4.31038 21.496C4.46443 21.5648 4.63127 21.6004 4.8 21.6004H19.2C19.3687 21.6004 19.5356 21.5648 19.6896 21.496C19.8437 21.4272 19.9815 21.3266 20.094 21.2009C20.2066 21.0752 20.2914 20.9272 20.3429 20.7665C20.3943 20.6058 20.4114 20.4361 20.3928 20.2684L19.1928 9.46839C19.1603 9.17476 19.0206 8.90344 18.8005 8.70638C18.5805 8.50932 18.2954 8.40037 18 8.40039H16.8V7.20039C16.8 5.92735 16.2943 4.70645 15.3941 3.80628C14.4939 2.9061 13.273 2.40039 12 2.40039ZM14.4 8.40039V7.20039C14.4 6.56387 14.1471 5.95342 13.6971 5.50333C13.247 5.05325 12.6365 4.80039 12 4.80039C11.3635 4.80039 10.753 5.05325 10.3029 5.50333C9.85285 5.95342 9.6 6.56387 9.6 7.20039V8.40039H14.4ZM7.2 12.0004C7.2 11.6821 7.32642 11.3769 7.55147 11.1519C7.77651 10.9268 8.08174 10.8004 8.4 10.8004C8.71826 10.8004 9.02348 10.9268 9.24852 11.1519C9.47357 11.3769 9.6 11.6821 9.6 12.0004C9.6 12.3186 9.47357 12.6239 9.24852 12.8489C9.02348 13.074 8.71826 13.2004 8.4 13.2004C8.08174 13.2004 7.77651 13.074 7.55147 12.8489C7.32642 12.6239 7.2 12.3186 7.2 12.0004ZM15.6 10.8004C15.2817 10.8004 14.9765 10.9268 14.7515 11.1519C14.5264 11.3769 14.4 11.6821 14.4 12.0004C14.4 12.3186 14.5264 12.6239 14.7515 12.8489C14.9765 13.074 15.2817 13.2004 15.6 13.2004C15.9183 13.2004 16.2235 13.074 16.4485 12.8489C16.6736 12.6239 16.8 12.3186 16.8 12.0004C16.8 11.6821 16.6736 11.3769 16.4485 11.1519C16.2235 10.9268 15.9183 10.8004 15.6 10.8004Z"
+              fill="black"
+            ></path>
+          </svg>
+          <p class="flex-grow-0 text-base text-left text-black">
+            Categories
+          </p>
+          <svg
+            width="20"
+            height="20"
+            viewBox="0 0 20 20"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            class="relative flex-grow-0 w-5 h-5"
+            preserveAspectRatio="none"
+            [class]="isOpen ? 'close' : 'open'"
+          >
+            <path
+              fill-rule="evenodd"
+              clip-rule="evenodd"
+              d="M14.707 12.7074C14.5194 12.8949 14.2651 13.0002 14 13.0002C13.7348 13.0002 13.4805 12.8949 13.293 12.7074L9.99997 9.41441L6.70697 12.7074C6.61472 12.8029 6.50438 12.8791 6.38237 12.9315C6.26037 12.9839 6.12915 13.0115 5.99637 13.0127C5.86359 13.0138 5.73191 12.9885 5.60902 12.9382C5.48612 12.8879 5.37447 12.8137 5.28057 12.7198C5.18668 12.6259 5.11243 12.5143 5.06215 12.3914C5.01187 12.2685 4.98656 12.1368 4.98772 12.004C4.98887 11.8712 5.01646 11.74 5.06887 11.618C5.12128 11.496 5.19746 11.3857 5.29297 11.2934L9.29297 7.29341C9.4805 7.10594 9.73481 7.00062 9.99997 7.00062C10.2651 7.00062 10.5194 7.10594 10.707 7.29341L14.707 11.2934C14.8944 11.4809 14.9998 11.7352 14.9998 12.0004C14.9998 12.2656 14.8944 12.5199 14.707 12.7074V12.7074Z"
+              fill="black"
+            ></path>
+          </svg>
+        </div>
+        <div
+          class="flex flex-col justify-center items-start self-stretch flex-grow-0 relative gap-[5px] pl-8 py-1.5"
+          *ngIf="isOpen"
+          [@dropDownMenu]
+        >
+          <div *ngFor="let tag of category">
+            <p
+              [routerLink]="['/feed', 'tag', tag]"
+              class="flex-grow-0 text-base text-left text-black menu-item"
+            >
+              {{ tag }}
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div
+        class="flex justify-start items-center flex-grow-0 relative gap-[7px]"
+        *ngIf="isLoggedIn$ | async"
+        [routerLink]="
+          '/profile/' + (currentUser$ | async)?.currentUser?.userName + '/'
+        "
+      >
+        <img
+          [src]="baseMedia + (currentUser$ | async)?.currentUser?.image"
+          alt=""
+          class="w-6 h-6 rounded-full"
+        />
+
+        <p class="flex-grow-0 text-base text-left text-black">
+          {{ (currentUser$ | async)?.currentUser?.userName }}
+        </p>
+      </div>
+      <div
+        class="flex justify-start items-center flex-grow-0 relative gap-[7px]"
+        *ngIf="isAnonymous$ | async"
+        routerLink="/login"
+      >
+        <svg
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          class="relative flex-grow-0 w-6 h-6"
+          preserveAspectRatio="xMidYMid meet"
+        >
+          <path
+            fill-rule="evenodd"
+            clip-rule="evenodd"
+            d="M3.60002 3.59961C3.28176 3.59961 2.97654 3.72604 2.7515 3.95108C2.52645 4.17612 2.40002 4.48135 2.40002 4.79961V19.1996C2.40002 19.5179 2.52645 19.8231 2.7515 20.0481C2.97654 20.2732 3.28176 20.3996 3.60002 20.3996C3.91828 20.3996 4.22351 20.2732 4.44855 20.0481C4.6736 19.8231 4.80002 19.5179 4.80002 19.1996V4.79961C4.80002 4.48135 4.6736 4.17612 4.44855 3.95108C4.22351 3.72604 3.91828 3.59961 3.60002 3.59961V3.59961ZM15.9516 14.7512C15.733 14.9775 15.6121 15.2807 15.6148 15.5953C15.6175 15.9099 15.7438 16.2109 15.9662 16.4334C16.1887 16.6559 16.4897 16.7821 16.8043 16.7848C17.119 16.7876 17.4221 16.6666 17.6484 16.448L21.2484 12.848C21.4734 12.623 21.5998 12.3178 21.5998 11.9996C21.5998 11.6814 21.4734 11.3762 21.2484 11.1512L17.6484 7.55121C17.5377 7.4366 17.4053 7.34518 17.2589 7.28229C17.1125 7.2194 16.955 7.18629 16.7957 7.18491C16.6364 7.18352 16.4784 7.21389 16.3309 7.27422C16.1834 7.33456 16.0494 7.42366 15.9367 7.53634C15.8241 7.64901 15.735 7.78299 15.6746 7.93046C15.6143 8.07794 15.5839 8.23596 15.5853 8.39529C15.5867 8.55463 15.6198 8.71209 15.6827 8.85849C15.7456 9.0049 15.837 9.13731 15.9516 9.24801L17.5032 10.7996H8.40002C8.08176 10.7996 7.77654 10.926 7.5515 11.1511C7.32645 11.3761 7.20002 11.6813 7.20002 11.9996C7.20002 12.3179 7.32645 12.6231 7.5515 12.8481C7.77654 13.0732 8.08176 13.1996 8.40002 13.1996H17.5032L15.9516 14.7512V14.7512Z"
+            fill="black"
+          ></path>
+        </svg>
+        <p class="flex-grow-0 text-base text-left text-black">
+          Sign In
+        </p>
+      </div>
+      <div
+        class="flex justify-start items-center flex-grow-0 relative gap-[7px]"
+        *ngIf="isLoggedIn$ | async"
+        routerLink="/login"
+        (click)="onLogout()"
+      >
+        <svg
+          class=""
+          fill="currentColor"
+          viewBox="0 0 20 20"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            fill-rule="evenodd"
+            d="M3 3a1 1 0 00-1 1v12a1 1 0 102 0V4a1 1 0 00-1-1zm10.293 9.293a1 1 0 001.414 1.414l3-3a1 1 0 000-1.414l-3-3a1 1 0 10-1.414 1.414L14.586 9H7a1 1 0 100 2h7.586l-1.293 1.293z"
+            clip-rule="evenodd"
+          ></path>
+        </svg>
+
+        <p class="flex-grow-0 text-base text-left text-black">
+          Sign Out
+        </p>
+      </div>
+      <div
+        class="flex justify-start items-center flex-grow-0 relative gap-[7px]"
+        *ngIf="isAnonymous$ | async"
+        routerLink="/register"
+      >
+        <svg
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          class="relative flex-grow-0 w-6 h-6"
+          preserveAspectRatio="xMidYMid meet"
+        >
+          <path
+            fill-rule="evenodd"
+            clip-rule="evenodd"
+            d="M6.00002 4.7998C5.04524 4.7998 4.12957 5.17909 3.45444 5.85422C2.77931 6.52935 2.40002 7.44503 2.40002 8.3998V15.5998C2.40002 16.5546 2.77931 17.4703 3.45444 18.1454C4.12957 18.8205 5.04524 19.1998 6.00002 19.1998H18C18.9548 19.1998 19.8705 18.8205 20.5456 18.1454C21.2207 17.4703 21.6 16.5546 21.6 15.5998V8.3998C21.6 7.44503 21.2207 6.52935 20.5456 5.85422C19.8705 5.17909 18.9548 4.7998 18 4.7998H6.00002ZM4.80002 15.5998V14.3998H10.8V16.7998H6.00002C5.68176 16.7998 5.37654 16.6734 5.1515 16.4483C4.92645 16.2233 4.80002 15.9181 4.80002 15.5998ZM13.2 16.7998H18C18.3183 16.7998 18.6235 16.6734 18.8486 16.4483C19.0736 16.2233 19.2 15.9181 19.2 15.5998V14.3998H13.2V16.7998ZM13.2 11.9998H19.2V9.5998H13.2V11.9998ZM10.8 9.5998H4.80002V11.9998H10.8V9.5998Z"
+            fill="black"
+          ></path>
+        </svg>
+        <p class="flex-grow-0 text-base text-left text-black">
+          Sign Up
+        </p>
+      </div>
+    </div>
+    <div
+      class="flex flex-col justify-end items-center flex-grow-0 relative gap-[17px]"
+    >
+      <div class="flex-grow-0 w-[162px] h-0.5 bg-[#d9d9d9]/60"></div>
+      <div
+        class="flex justify-start items-start flex-grow-0 relative gap-[7px] p-px"
+      >
+        <a href="https://www.twitch.tv/dezeonic">
+          <svg
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            class="flex-grow-0 w-[22.47px] h-6 relative"
+            preserveAspectRatio="xMidYMid meet"
+          >
+            <g clip-path="url(#clip0_400_5802)">
+              <path
+                d="M11.6153 23.6289C17.7253 23.6289 22.6785 18.3394 22.6785 11.8145C22.6785 5.28952 17.7253 0 11.6153 0C5.50519 0 0.552002 5.28952 0.552002 11.8145C0.552002 18.3394 5.50519 23.6289 11.6153 23.6289Z"
+                fill="black"
+              ></path>
+              <path
+                d="M6.20239 16.3168C6.20239 13.5406 6.20239 10.7644 6.20239 7.98826C6.28209 7.34145 6.51958 6.74401 6.70607 6.12954C6.77779 5.89124 6.81923 5.86571 7.05673 5.86571C10.321 5.86571 13.5853 5.86571 16.8497 5.8623C16.9883 5.8623 17.0266 5.89805 17.025 6.04784C17.0202 8.32699 17.0218 10.6061 17.0218 12.8836C17.0218 13.0912 16.966 13.2615 16.821 13.4129C15.9507 14.3338 15.0868 15.2581 14.2229 16.1874C14.0763 16.344 13.9185 16.4155 13.7129 16.4121C13.249 16.4053 12.7852 16.4189 12.3214 16.407C12.0727 16.4002 11.8847 16.487 11.7141 16.6793C11.4384 16.9908 11.1483 17.2887 10.863 17.5917C10.7673 17.6938 10.6605 17.7636 10.5203 17.7619C9.98313 17.7568 9.44439 17.7738 8.90724 17.7534C8.8132 17.6972 8.82595 17.5968 8.82277 17.5083C8.8148 17.2581 8.82117 17.0078 8.81798 16.7559C8.8148 16.4683 8.7622 16.4121 8.48805 16.4104C7.82818 16.407 7.1667 16.4121 6.50683 16.407C6.40163 16.4104 6.28368 16.4257 6.20239 16.3168V16.3168ZM11.4655 14.6742C11.5595 14.5721 11.6615 14.5312 11.7954 14.5312C12.5748 14.5346 13.3542 14.5295 14.132 14.5329C14.2532 14.5329 14.344 14.487 14.4269 14.3985C14.9067 13.8844 15.3896 13.3721 15.8742 12.8615C15.9603 12.7712 15.9969 12.6742 15.9969 12.5449C15.9937 10.7406 15.9937 8.93805 15.9985 7.13379C15.9985 6.99422 15.9619 6.95677 15.8327 6.95677C13.2363 6.96018 10.6382 6.96018 8.04176 6.95677C7.90946 6.95677 7.87758 7.00103 7.87758 7.1372C7.88077 9.54231 7.88077 11.9457 7.87758 14.3508C7.87758 14.4955 7.90787 14.5432 8.05132 14.5415C8.73191 14.5329 9.41251 14.5415 10.0915 14.5346C10.2238 14.5329 10.2573 14.5772 10.2557 14.7134C10.2477 15.1151 10.2525 15.5168 10.2525 15.9832C10.6828 15.5168 11.0765 15.0981 11.4655 14.6742Z"
+                fill="#F3F3F3"
+              ></path>
+              <path
+                d="M10.5904 10.7322C10.5904 10.2573 10.5936 9.78075 10.5872 9.30586C10.5856 9.1782 10.6175 9.13054 10.7418 9.13735C10.9761 9.14756 11.212 9.14586 11.4463 9.13735C11.5563 9.13395 11.5978 9.16288 11.5962 9.29054C11.5914 10.2608 11.593 11.2327 11.5962 12.2029C11.5962 12.3118 11.5707 12.3544 11.4623 12.351C11.2152 12.3442 10.9682 12.3442 10.7211 12.351C10.6095 12.3544 10.5888 12.3033 10.5888 12.1995C10.592 11.7093 10.5904 11.2208 10.5904 10.7322V10.7322Z"
+                fill="#F3F3F3"
+              ></path>
+              <path
+                d="M14.2882 10.764C14.2882 11.2338 14.2819 11.7019 14.2914 12.17C14.2946 12.3232 14.2484 12.3606 14.1129 12.3538C13.8914 12.3419 13.6682 12.3453 13.4451 12.3521C13.3383 12.3555 13.2936 12.3317 13.2936 12.2023C13.2984 11.2321 13.2984 10.2602 13.2936 9.29C13.2936 9.16574 13.3319 9.1317 13.4419 9.1351C13.6762 9.14191 13.9121 9.14361 14.1464 9.1351C14.2675 9.13 14.2898 9.18276 14.2882 9.2968C14.285 9.78701 14.2882 10.2755 14.2882 10.764V10.764Z"
+                fill="#F3F3F3"
+              ></path>
+            </g>
+            <defs>
+              <clipPath id="clip0_400_5802">
+                <rect
+                  width="22.474"
+                  height="24"
+                  fill="white"
+                  transform="translate(0.552002)"
+                ></rect>
+              </clipPath>
+            </defs>
+          </svg>
+        </a>
+        <a href="">
+          <svg
+            width="23"
+            height="24"
+            viewBox="0 0 23 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            class="flex-grow-0 w-[22.47px] h-6 relative"
+            preserveAspectRatio="xMidYMid meet"
+          >
+            <g clip-path="url(#clip0_400_5809)">
+              <path
+                d="M11.2256 23.8907C17.3357 23.8907 22.2889 18.6011 22.2889 12.0762C22.2889 5.55124 17.3357 0.261719 11.2256 0.261719C5.11554 0.261719 0.162354 5.55124 0.162354 12.0762C0.162354 18.6011 5.11554 23.8907 11.2256 23.8907Z"
+                fill="black"
+              ></path>
+              <path
+                d="M9.55042 18.9173V12.1292H8.26892V9.81433H9.55042V7.5522C9.55042 7.5522 9.69865 5.2373 11.7181 5.2373C13.7376 5.2373 14.1823 5.2373 14.1823 5.2373V7.81603H12.8514C12.8514 7.81603 12.0672 7.78709 12.0672 8.65347C12.0672 9.51986 12.0672 9.7939 12.0672 9.7939H14.1807L13.9129 12.0782H12.1007V18.9173H9.55042Z"
+                fill="#F3F3F3"
+              ></path>
+            </g>
+            <defs>
+              <clipPath id="clip0_400_5809">
+                <rect
+                  width="22.474"
+                  height="24"
+                  fill="white"
+                  transform="translate(0.026001)"
+                ></rect>
+              </clipPath>
+            </defs>
+          </svg>
+        </a>
+        <a href="https://twitter.com/Dezeonic">
+          <svg
+            width="23"
+            height="24"
+            viewBox="0 0 23 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            class="flex-grow-0 w-[22.47px] h-6 relative"
+            preserveAspectRatio="xMidYMid meet"
+          >
+            <g clip-path="url(#clip0_400_5813)">
+              <path
+                d="M11.5792 23.6455C5.46913 23.6455 0.515934 18.356 0.515934 11.8311C0.515934 5.30612 5.46913 0.0166016 11.5792 0.0166016C17.6893 0.0166016 22.6425 5.30612 22.6425 11.8311C22.6425 18.356 17.6893 23.6455 11.5792 23.6455Z"
+                fill="black"
+              ></path>
+              <path
+                d="M18.1206 16.1892C18.1206 16.1892 15.0172 16.4616 14.292 15.0233C14.292 15.0233 15.9831 14.9858 16.7084 12.9586C16.7084 12.9586 15.811 13.1799 15.4651 13.1424C15.4651 13.1424 17.9851 11.8896 17.6057 10.082C17.6057 10.082 16.7084 10.5245 16.4326 10.4139C16.4326 10.4139 18.4011 9.12368 17.2614 6.54326C17.2614 6.54326 15.3966 9.27177 11.737 9.56623C11.737 9.56623 11.9091 6.5807 9.80359 6.06326C7.69805 5.54751 6.97283 6.94836 6.97283 6.94836C6.97283 6.94836 5.83319 6.579 5.24664 6.28453C5.24664 6.28453 6.0404 7.57475 6.31614 7.83347C6.31614 7.83347 5.28011 7.539 5.03943 7.35347C5.03943 7.35347 5.48891 8.23858 6.2476 8.93815C6.2476 8.93815 5.69611 13.236 9.43381 16.2079C13.1715 19.1799 17.3858 16.9688 18.1206 16.1892V16.1892Z"
+                fill="#F3F3F3"
+              ></path>
+            </g>
+            <defs>
+              <clipPath id="clip0_400_5813">
+                <rect
+                  width="22.474"
+                  height="24"
+                  fill="white"
+                  transform="translate(0.5)"
+                ></rect>
+              </clipPath>
+            </defs>
+          </svg>
+        </a>
+        <a href="https://www.youtube.com/channel/UCexuR3HKn6mr1q78I0-eiXA">
+          <svg
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            class="flex-grow-0 w-[22.47px] h-6 relative"
+            preserveAspectRatio="xMidYMid meet"
+          >
+            <g clip-path="url(#clip0_400_5816)">
+              <path
+                d="M12.2109 24C18.417 24 23.4479 18.6274 23.4479 12C23.4479 5.37258 18.417 0 12.2109 0C6.00492 0 0.973938 5.37258 0.973938 12C0.973938 18.6274 6.00492 24 12.2109 24Z"
+                fill="black"
+              ></path>
+              <path
+                d="M13.6017 16.6814C13.2375 16.6814 12.8748 16.6814 12.5106 16.6814C12.5025 16.6744 12.4944 16.6762 12.4863 16.6762C12.3454 16.6796 12.2046 16.671 12.0637 16.671C11.8419 16.6727 11.6202 16.6675 11.3967 16.6658C11.2494 16.6641 11.1005 16.671 10.9532 16.6606C10.7945 16.6502 10.6375 16.6623 10.4804 16.652C10.338 16.6416 10.1955 16.6537 10.053 16.6433C9.82153 16.6278 9.5884 16.6451 9.35689 16.633C9.17557 16.6243 8.99425 16.633 8.81293 16.6243C8.63161 16.6157 8.45029 16.6122 8.26897 16.5984C7.94356 16.5724 7.61816 16.5344 7.30085 16.4532C6.99973 16.3754 6.73584 16.2215 6.527 15.9708C6.3732 15.7875 6.26635 15.5732 6.18702 15.3432C6.08989 15.058 6.03646 14.7641 5.99922 14.465C5.97332 14.2558 5.9539 14.0449 5.93609 13.8339C5.92476 13.7043 5.91667 13.5763 5.90695 13.4467C5.89076 13.2185 5.88104 12.992 5.8778 12.7638C5.87618 12.6825 5.87619 12.5995 5.87457 12.5183C5.8681 12.1846 5.86971 11.8492 5.87457 11.5155C5.87295 11.3254 5.87619 11.1369 5.88428 10.9467C5.89238 10.76 5.90533 10.5716 5.92152 10.3849C5.93609 10.2172 5.94904 10.0495 5.96685 9.88176C5.98466 9.71406 6.00247 9.5481 6.02513 9.3804C6.05103 9.19541 6.07208 9.00869 6.10932 8.8237C6.1676 8.53326 6.27444 8.26701 6.45414 8.03707C6.64679 7.78985 6.8945 7.63079 7.18105 7.53916C7.34942 7.48557 7.52264 7.46655 7.69749 7.45445C7.84643 7.44408 7.99536 7.43716 8.14431 7.4216C8.19773 7.41641 8.24954 7.41641 8.30297 7.41296C8.43572 7.40604 8.56686 7.3974 8.69961 7.39221C8.8955 7.38357 9.08977 7.37146 9.28566 7.36455C9.42003 7.35936 9.55278 7.35245 9.68715 7.34726C10.0336 7.33343 10.3801 7.32651 10.7265 7.32479C10.788 7.32479 10.8495 7.32133 10.9111 7.32133C11.1863 7.32306 11.4615 7.31268 11.7367 7.31614C12.0994 7.31614 12.4604 7.31614 12.823 7.31614C12.8344 7.31614 12.8457 7.31614 12.857 7.31614C13.1954 7.31441 13.5337 7.32133 13.8721 7.32133C14.021 7.32133 14.1716 7.3196 14.3205 7.32479C14.4468 7.32997 14.5715 7.32133 14.6977 7.32997C14.8111 7.33689 14.9244 7.32997 15.0361 7.33862C15.1429 7.34726 15.2482 7.34035 15.355 7.34726C15.5347 7.35763 15.7144 7.36109 15.8941 7.36455C16.294 7.37319 16.6906 7.4216 17.0808 7.51842C17.3803 7.59103 17.6426 7.74144 17.8563 7.98002C18.0263 8.1702 18.1445 8.39322 18.2303 8.63699C18.3258 8.90496 18.3792 9.1833 18.418 9.46511C18.4423 9.63972 18.4601 9.81607 18.4747 9.99414C18.486 10.1238 18.4941 10.2552 18.5039 10.3866C18.5136 10.5284 18.5217 10.6719 18.5346 10.8136C18.5395 10.8689 18.5378 10.9243 18.5395 10.9796C18.5524 11.474 18.5508 11.9668 18.5476 12.4612C18.5459 12.6462 18.5443 12.8312 18.5346 13.0162C18.5249 13.1891 18.5119 13.3602 18.4958 13.5331C18.4779 13.7354 18.4585 13.9359 18.4342 14.1365C18.3889 14.4978 18.3452 14.8609 18.2497 15.2136C18.1801 15.466 18.0894 15.7063 17.9405 15.9189C17.7834 16.1437 17.5794 16.3027 17.3334 16.4013C17.165 16.4687 16.9902 16.4998 16.8104 16.5154C16.6372 16.5292 16.4624 16.5431 16.2891 16.5569C16.1872 16.5655 16.0852 16.5707 15.9848 16.5776C15.831 16.5897 15.6756 16.5949 15.5218 16.6105C15.4684 16.6157 15.4165 16.6157 15.3631 16.6191C15.232 16.626 15.1009 16.633 14.9697 16.6416C14.6751 16.6589 14.3804 16.6623 14.0874 16.6675C13.9951 16.6693 13.9028 16.6693 13.8106 16.671C13.741 16.6796 13.6713 16.671 13.6017 16.6814V16.6814ZM11.761 7.32824C12.0832 7.32824 12.4053 7.32824 12.7275 7.32651C12.7615 7.32651 12.7971 7.32997 12.8311 7.32479C12.8311 7.32133 12.8311 7.3196 12.8311 7.31614C12.4652 7.31614 12.0977 7.31614 11.7319 7.31614C11.7319 7.3196 11.7319 7.32133 11.7319 7.32479C11.7416 7.32651 11.7513 7.32824 11.761 7.32824V7.32824ZM10.9645 10.0339C10.9645 11.3444 10.9661 12.6549 10.9661 13.9671C10.9661 13.9688 10.9677 13.9705 10.9677 13.9705C10.9726 13.974 10.9693 13.9653 10.9726 13.974C12.0476 13.3153 13.1209 12.6566 14.1991 11.9944C13.1193 11.3323 12.0443 10.6736 10.9726 10.0149C10.9645 10.0218 10.9645 10.027 10.9645 10.0339Z"
+                fill="#F3F3F3"
+              ></path>
+            </g>
+            <defs>
+              <clipPath id="clip0_400_5816">
+                <rect
+                  width="22.474"
+                  height="24"
+                  fill="white"
+                  transform="translate(0.973999)"
+                ></rect>
+              </clipPath>
+            </defs>
+          </svg>
+        </a>
+      </div>
+      <div class="flex-grow-0 w-[162px] h-0.5 bg-[#d9d9d9]/60"></div>
+      <p class="flex-grow-0 text-base text-left text-black">
+        ©2022 Dezonic LLC
+      </p>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,114 @@
+<!-- <!DOCTYPE html>
+<div
+  *ngIf="currentUser"
+  class="flex py-3 text-base rounded hover:bg-skin-base"
+  ng-class="{ open: edit }"
+  [ngClass]="edit ? 'open' : ''"
+>
+  <div class="w-1/4 ml-3 font-medium">Name</div>
+  <div class="flex w-full" *ngIf="!edit">
+    <div class="w-full">
+      <strong class="capitalize text-skin-fadded">
+        {{ currentUser.currentUser.firstName }}
+        {{ currentUser.currentUser.lastName }}
+      </strong>
+    </div>
+    <div class="w-1/6 pr-2 text-right text-skin-links">Edit</div>
+  </div>
+  <div>
+    <form [formGroup]="form" class="mb-2" *ngIf="edit">
+      <div class="p-2">
+        <div class="flex items-center justify-center gap-2 pb-3">
+          <h3 for="Name" class="font-medium text-skin-fadded">
+            First
+          </h3>
+          <input
+            type="text"
+            formControlName="newFirstName"
+            class="rounded h-7"
+          />
+        </div>
+        <div class="flex justify-center gap-2">
+          <label for="FirstName" class="font-medium text-skin-fadded">
+            Last
+          </label>
+          <input
+            type="text"
+            formControlName="newLastName"
+            class="rounded h-7"
+          />
+        </div>
+      </div>
+      <div class="my-3 border"></div>
+      <div class="flex justify-center gap-2">
+        <button
+          (click)="onSubmit(); $event.stopPropagation()"
+          class="px-2 py-1 rounded-md text-skin-contrast bg-skin-button"
+        >
+          Change
+        </button>
+        <button
+          (click)="onCancel(); $event.stopPropagation()"
+          class="text-skin-links"
+        >
+          Cancel
+        </button>
+      </div>
+    </form>
+  </div>
+</div> -->
+<form
+  *ngIf="currentUser"
+  [formGroup]="form"
+  class="body0"
+  ng-class="{ open: edit }"
+  [ngClass]="edit ? 'open' : ''"
+>
+  <div class="head1">
+    <div class="a2">
+      <div class="w-[81px]"><p class="p1">Name</p></div>
+
+      <p class="f1" *ngIf="!edit">
+        {{ currentUser.currentUser.firstName }}
+        {{ currentUser.currentUser.lastName }}
+      </p>
+
+      <div class="e1" *ngIf="!edit">
+        Edit
+      </div>
+    </div>
+    <div class="g1" *ngIf="edit"></div>
+  </div>
+
+  <div class="body1" *ngIf="edit">
+    <div class="body2">
+      <div class="a1">
+        <p class="t1">First Name</p>
+        <input type="text" class="i1" formControlName="newFirstName" />
+      </div>
+      <div class="a1">
+        <p class="t1">Last Name</p>
+        <input type="text" class="i1" formControlName="newLastName" />
+      </div>
+
+      <div class="gd1"><div class="g2"></div></div>
+    </div>
+    <div class="buttonlist1">
+      <button
+        (click)="onSubmit(); $event.stopPropagation()"
+        class="bs"
+        [disabled]="form.invalid"
+      >
+        Change
+      </button>
+      <button (click)="onCancel(); $event.stopPropagation()" class="bc">
+        Cancel
+      </button>
+    </div>
+    <div class="flex flex-row items-start justify-end w-full px-3">
+      <p class="flex items-center text-right text-skin-links">
+        Forgot password?
+      </p>
+    </div>
+  </div>
+</form>

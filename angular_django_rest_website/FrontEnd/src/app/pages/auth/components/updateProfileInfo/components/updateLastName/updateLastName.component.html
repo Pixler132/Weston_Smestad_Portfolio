@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<div *ngIf="currentUser">
+  <form [formGroup]="form" class="mb-2 text-xl text-slate-300 text-bold">
+    <fieldset class="flex">
+      <div class="mb-6">
+        <label *ngIf="error" class="text-red-600">{{ error }}</label>
+        <label class="block" *ngIf="!edit">
+          {{ currentUser.currentUser.lastName }}
+        </label>
+        <fieldset class="form-group" *ngIf="edit">
+          <input
+            type="text"
+            class="w-full px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300"
+            placeholder="title"
+            formControlName="newLastName"
+          />
+        </fieldset>
+      </div>
+      <button (click)="onEdit()">
+        <p *ngIf="edit">cancel</p>
+        <p *ngIf="!edit">edit</p>
+      </button>
+      <button (click)="onSubmit()" *ngIf="edit">update</button>
+    </fieldset>
+  </form>
+</div>

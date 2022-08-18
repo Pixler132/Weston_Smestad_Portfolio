@@ -1,0 +1,10 @@
+class Profile(models.Model):
+    user = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+    )
+    image = models.ImageField(upload_to ='Profile/',null=True, blank = True)
+    bio = models.TextField(blank=True, null=True)
+    emailVerified = models.BooleanField(default=False)
+    publicFavorite = models.BooleanField(default=False)
+    owner = models.BooleanField(default=False)

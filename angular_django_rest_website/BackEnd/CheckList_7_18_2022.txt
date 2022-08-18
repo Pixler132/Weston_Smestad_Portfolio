@@ -1,0 +1,16 @@
+admin astethic templaet on figma
+
+email workaround/disable email for now
+Consolidate endpoints
+Finish error messages on each endpoint with clear distinctions
+finish the trending algorithm
+
+display error messages
+404 page
+email verification page
+reset password page
+clean up on components
+clean up css
+
+make actual article
+move article creation on article creation

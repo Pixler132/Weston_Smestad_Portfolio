@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<div *ngIf="currentUser" class="w-full">
+  <form [formGroup]="form" class="w-full mb-2 text-xl text-slate-300 text-bold">
+    <fieldset>
+      <div class="mb-6">
+        <label class="block"></label>
+        <dz-profile-images-form
+          *ngIf="currentUser"
+          [parentFormGroup]="form"
+          class=""
+        ></dz-profile-images-form>
+      </div>
+      <button (click)="onSubmit()">image</button>
+    </fieldset>
+  </form>
+</div>

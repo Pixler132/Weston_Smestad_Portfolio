@@ -1,0 +1,35 @@
+<div
+  class="flex flex-col justify-start items-center w-full overflow-hidden rounded-[13px]"
+>
+  <div
+    class="flex justify-start items-center self-stretch flex-grow-0 flex-shrink-0 h-9 relative gap-2.5 px-[22px] bg-[#d9d9d9]/60"
+  >
+    <p class="flex-grow-0 flex-shrink-0 text-base text-left text-black">
+      {{ comment.updated_at | dateAgo }}
+    </p>
+  </div>
+  <div
+    class="flex flex-col justify-center items-center self-stretch flex-grow-0 flex-shrink-0 relative gap-[19px] pl-[7px] pt-[5px] pb-[17px]"
+  >
+    <p
+      class="self-stretch flex-grow-0 flex-shrink-0 w-full text-base text-left text-black"
+    >
+      {{ comment.content }}
+    </p>
+    <p
+      class="self-stretch flex-grow-0 flex-shrink-0 w-full text-base text-left"
+    >
+      <span
+        class="self-stretch flex-grow-0 flex-shrink-0 w-full text-base text-left text-black"
+      >
+        Commented on
+      </span>
+      <span
+        class="self-stretch flex-grow-0 flex-shrink-0 w-full text-base text-left text-blue-600"
+        [routerLink]="['/article', comment.article.urlGen]"
+      >
+        {{ comment.article.title }}
+      </span>
+    </p>
+  </div>
+</div>

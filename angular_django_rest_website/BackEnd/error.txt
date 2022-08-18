@@ -1,0 +1,64 @@
+ {
+  errors:{
+    title: 'title  required', / 'title exceeds XXX length'
+    discription: 'discription required', / 'discription exceeds XXX length'
+    tags:  / 'tag exceeds XXX length'
+    content: 'content required'
+  }
+}
+
+
+{
+  errors:{
+    usercrdantls: 'invaled login info',
+    username: 'username taken',
+    email: 'email is taken'
+  }
+}
+
+ userInfo = {
+                'username' : holder['userName'],
+                'email': holder['email'],
+                'password' : holder['password'],
+                'first_name' : holder['firstName'],
+                'last_name' : holder['lastName']
+            }
+			
+{
+ user: {
+    userName: { 
+      newUserName: string | null 
+    }
+    email: { 
+      newEmail: string | null 
+    }
+    password: {
+      newPassword: string
+      confirmPassword: string
+      oldPassword: string
+    } | null
+  }
+}
+
+
+Registration: #spell out as you will display it - Done
+	Username is already Taken
+	Email is already Taken
+	password - 8 characters long minimum
+	
+
+Login - Done
+	-testing variant teling password or username
+	Invalid Credientials
+	
+Profile Update
+	- check if taken Error Username taken or Invalid Username
+	- invalid data firstname, lastname, bio
+	- newPassword not the same as old password, invalid data, minimum length not met, 
+
+Article Validator
+	- Article title, description, content is one error if blank
+
+Comment
+	- error on blank
+	- failed to post

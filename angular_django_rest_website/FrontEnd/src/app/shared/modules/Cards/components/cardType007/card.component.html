@@ -1,0 +1,36 @@
+<div class="relative flex w-full" *ngIf="article">
+  <div class="">
+    <a [routerLink]="['/article', article.urlGen]">
+      <img
+        src="https://images.unsplash.com/photo-1518235506717-e1ed3306a89b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80"
+        alt="asdf"
+        class="object-cover object-center w-[138px] min-w-[138px] h-[155px] min-h-[155px]"
+      />
+    </a>
+  </div>
+  <div class="mx-4">
+    <header>
+      <p>
+        <a [routerLink]="['/article', article.urlGen]" class="title">
+          {{ article.articleTitle }}
+        </a>
+      </p>
+    </header>
+
+    <div>
+      <p class="discraption">
+        {{
+          article.articleDescription | limitpipe: { length: 15, cocat: '...' }
+        }}
+      </p>
+    </div>
+    <div class="aurtherTags">
+      <span class="text-[#dc3545]">{{ article.author.username }}</span>
+
+      <div *ngFor="let tag of article.tags; let x = index" class="flex wrap">
+        <span *ngIf="x !== article.tags.length - 1">{{ tag }},</span>
+        <span *ngIf="x == article.tags.length - 1">{{ tag }}</span>
+      </div>
+    </div>
+  </div>
+</div>

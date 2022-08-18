@@ -1,0 +1,37 @@
+<div [formGroup]="parentFormGroup">
+  <div class="max-w-md mx-auto rounded-lg md:max-w-xl">
+    <div class="md:flex">
+      <div class="w-full p-3">
+        <button (click)="compressFile()" class="w-full h-full">
+          <div *ngIf="url" class="relative">
+            <img [src]="url" class="flex justify-center" />
+            <button
+              *ngIf="url"
+              (click)="onDeleteImage(); $event.stopPropagation()"
+            >
+              <mat-icon
+                class="absolute z-20 text-xl hover:text-red-600 top-2 right-4 x"
+              >
+                delete_forever
+              </mat-icon>
+            </button>
+          </div>
+
+          <div
+            *ngIf="!url"
+            class="relative flex items-center justify-center h-48 bg-gray-100 border-2 border-blue-700 border-dashed border-dotted rounded-lg"
+          >
+            <div class="">
+              <div class="flex flex-col items-center">
+                <i class="text-blue-700 fa fa-folder-open fa-4x"></i>
+                <span class="block font-normal text-gray-400"></span>
+              </div>
+            </div>
+
+            Upload and compress Image
+          </div>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

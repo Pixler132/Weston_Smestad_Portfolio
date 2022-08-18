@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<div *ngIf="!(isLoading$ | async)">
+  <div *ngFor="let comment of comments">
+    <dz-comment
+      [comment]="comment"
+      [apiUrl]="aipUrlProps"
+      [idProps]="idProps"
+    ></dz-comment>
+  </div>
+  <dz-comment-form [idProps]="idProps"></dz-comment-form>
+</div>

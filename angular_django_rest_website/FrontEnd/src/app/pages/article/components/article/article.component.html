@@ -1,0 +1,95 @@
+<div class="container" *ngIf="!(isLoading$ | async)" class="bg-white">
+  <article class="article" *ngIf="article">
+    <div class="date">
+      <dd class="text-right">
+        {{ date }}
+      </dd>
+    </div>
+    <div class="flex text-sm text-yellow-600 uppercase">
+      <div *ngFor="let tag of article.tags; let i = index" class="flex">
+        <p *ngIf="i != 0">&nbsp;|&nbsp;</p>
+        <a
+          [routerLink]="['/feed', 'tag', tag]"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }"
+        >
+          {{ tag }}
+        </a>
+      </div>
+    </div>
+    <div class="col-span-6 text-xl text-left">
+      <div class="">
+        <dl>
+          <dt class="sr-only">Date</dt>
+        </dl>
+      </div>
+    </div>
+    <div class="flex justify-center w-full">
+      <div class="">
+        <span *ngIf="isAuthor$ | async">
+          <a
+            [routerLink]="['/article', article.urlGen, 'edit']"
+            class="btn btn-outline-secondary btn-sm hello"
+            (click)="onEdit()"
+          >
+            <i class="ion-edit"></i>
+            Edit Article
+          </a>
+          <button
+            class="btn btn-outline-danger btn-sm"
+            (click)="deleteArticle()"
+          >
+            Delete Article
+          </button>
+        </span>
+        <div
+          *ngFor="let content of article.content"
+          class="pb-10 text-xl whitespace-pre-wrap"
+        >
+          <div *ngIf="content.type === contentType.title" class="">
+            <dz-title-type-001 [content]="content"></dz-title-type-001>
+          </div>
+          <div *ngIf="content.type === contentType.body" class="">
+            <dz-body-type-001 [content]="content"></dz-body-type-001>
+          </div>
+          <!-- <div *ngIf="content.type === contentType.body" class="">
+            <dz-image-type-001 [content]="content"></dz-image-type-001>
+          </div> -->
+          <div *ngIf="content.type === contentType.image" class="">
+            <dz-image-type-001 [content]="content"></dz-image-type-001>
+          </div>
+          <div *ngIf="content.type === contentType.imageImage" class="">
+            <dz-image-image-type-001
+              [content]="content"
+            ></dz-image-image-type-001>
+          </div>
+          <div *ngIf="content.type === contentType.bodyImage" class="">
+            <dz-text-image-type-001
+              [content]="content"
+            ></dz-text-image-type-001>
+          </div>
+          <div *ngIf="content.type === contentType.imageBody" class="">
+            <dz-image-text-type-001
+              [content]="content"
+            ></dz-image-text-type-001>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="flex items-center gap-3 py-5">
+      <img
+        [src]="baseMedia + article.author.profileImg"
+        alt=""
+        class="w-12 rounded-full"
+      />
+      <div class="text-base">
+        <a class="" (click)="onAuthorClick()">
+          Author: {{ article.author.username }}
+        </a>
+      </div>
+    </div>
+    <dz-comment-main [apiUrl]="commentUrl" [id]="article.id"></dz-comment-main>
+  </article>
+</div>
+<div></div>
+<button (click)="onFav()" [disabled]="isFavoriting$ | async">fav</button>

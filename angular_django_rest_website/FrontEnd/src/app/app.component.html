@@ -1,0 +1,25 @@
+<head></head>
+<!-- <dz-sidenav-001
+  *ngIf="!router.url.includes('login') && !router.url.includes('register')"
+></dz-sidenav-001> -->
+<!-- <div class="flex w-full h-full"> -->
+<!-- <dz-sidenav-001
+    *ngIf="!router.url.includes('login') && !router.url.includes('register')"
+  ></dz-sidenav-001> -->
+
+<!-- <div class="w-full">
+    <router-outlet></router-outlet> -->
+<!-- <dz-footer
+      *ngIf="!router.url.includes('login') && !router.url.includes('register')"
+    ></dz-footer> -->
+<!-- </div>
+</div> -->
+<div class="md:flex">
+  <!-- mobile menu bar -->
+  <div class="z-50 md:mr-52">
+    <dz-sidenav-001 class=""></dz-sidenav-001>
+  </div>
+  <div class="flex-1 min-h-full pt-10 md:pt-0" (click)="onClickoffMenu()">
+    <router-outlet class=""></router-outlet>
+  </div>
+</div>

@@ -1,0 +1,90 @@
+<!-- <!DOCTYPE html>
+<div
+  *ngIf="currentUser"
+  class="relative grid grid-cols-4 py-3 text-base rounded hover:bg-skin-base"
+  ng-class="{ open: edit }"
+  [ngClass]="edit ? 'open' : ''"
+>
+  <div class="col-span-1 pl-2">Username</div>
+  <strong class="col-span-2" *ngIf="!edit">
+    {{ currentUser.currentUser.userName }}
+  </strong>
+  <div class="col-span-1 text-right text-skin-links" *ngIf="!edit">Edit</div>
+  <form [formGroup]="form" class="col-span-2" *ngIf="edit">
+    <input
+      type="text"
+      formControlName="newUserName"
+      class="mb-3 border rounded h-7"
+      required
+      [ngClass]="form.invalid == true ? 'errors' : ''"
+    />
+    <span>{{ backendErrors$ | async }}asdfsad</span>
+    <div class="flex justify-center gap-2">
+      <button
+        (click)="onSubmit(); $event.stopPropagation()"
+        class="px-2 py-1 rounded-md text-skin-contrast bg-skin-button"
+        [disabled]="form.invalid"
+      >
+        Change
+      </button>
+      <button
+        (click)="onCancel(); $event.stopPropagation()"
+        class="text-skin-links"
+      >
+        Cancel
+      </button>
+    </div>
+  </form>
+</div> -->
+<!DOCTYPE html>
+
+<form
+  *ngIf="currentUser"
+  [formGroup]="form"
+  class="body0"
+  ng-class="{ open: edit }"
+  [ngClass]="edit ? 'open' : ''"
+>
+  <!-- -->
+  <div class="head1">
+    <div class="a2">
+      <div class=""><p class="p1">Username</p></div>
+
+      <p class="f1" *ngIf="!edit">{{ currentUser.currentUser.userName }}</p>
+
+      <div class="e1" *ngIf="!edit">
+        Edit
+      </div>
+    </div>
+    <div class="g1" *ngIf="edit"></div>
+  </div>
+
+  <div class="body1" *ngIf="edit">
+    <div class="body2">
+      <div class="a1">
+        <p class="t1">Username</p>
+        <input
+          type="text"
+          class="i1"
+          formControlName="newUserName"
+          required
+          [ngClass]="form.invalid == true ? 'errors' : ''"
+        />
+      </div>
+      <div class="gd1"><div class="g2"></div></div>
+    </div>
+    <div class="buttonlist1">
+      <button
+        (click)="onSubmit(); $event.stopPropagation()"
+        class="bs"
+        [disabled]="form.invalid"
+      >
+        Change
+      </button>
+      <button (click)="onCancel(); $event.stopPropagation()" class="bc">
+        Cancel
+      </button>
+    </div>
+    <div class="flex flex-row items-start justify-end w-full px-3"></div>
+  </div>
+</form>

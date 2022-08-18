@@ -1,0 +1,53 @@
+Comments : Set up for reply *MAKE LIKE YOUTUBE*
+ARTICLES : Article author boolean that decides whether realname or username used if real name  *real name should be one field when sent back*
+TagList: Taglist endpoint of all viable tags, *adding and deleting tags admin page*
+*set default tag if one isn't given*
+*SEND NOTIFICATION TO USER IF SOMEONE REPLIES TO USER COMMENT*
+*Trending* article list  response but most click
+Search: search by title order release date *not case sensitive for all searches*
+make django article generator for Article End points
+
+reset password endpoint #fancy stuff
+
+when searching for tag that doesn't exist give error
+
+if page is called out of range send errors
+
+when profile page requestest make boolean that true or false whether person viewingpage is following user
+
+python manage.py check --deploy #(lists of fixes built into django to help you deploy securely)
+
+mass email NEWLETTER system
+
+if offset exceed article limit error
+
+feed comments posted, favorite articles, notification
+
+add field on profile to see when last time accessed
+used to check how many notification given
+{'user': {
+	'firstName': 'matthew', 
+	'lastName': 'zimmerman'}
+}
+
+{'user:{
+	firstName:{
+		newFirstName: str
+	}
+}
+
+contentTypes: {
+    title: 'title',
+    image: 'image',
+    body: 'body',
+    imageImage: 'image-image',
+    imageBody: 'image-body',
+    bodyImage: 'body-image',
+    textText: 'text-text',
+  },
+title: string | null
+  position: number
+  body: string | null
+  type: string
+  imageOne: string | null
+  imageTwo: string | null

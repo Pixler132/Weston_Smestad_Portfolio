@@ -1,0 +1,87 @@
+<!-- <div class="grid grid-cols-2 p-2 border-b-2 lg:grid-cols-3">
+  <p class="col-span-1">Full Name</p>
+  <p class="col-span-1" *ngIf="userProfile.firstName">
+    {{ userProfile.firstName }} {{ userProfile.lastName }}
+  </p>
+  <p class="col-span-1" *ngIf="!userProfile.firstName">Private</p>
+</div>
+<div class="grid grid-cols-2 p-2 border-b-2 lg:grid-cols-3">
+  <p class="col-span-1">UserName</p>
+  <p class="col-span-1">{{ userProfile.userName }}</p>
+</div>
+<div class="grid grid-cols-2 p-2 border-b-2 lg:grid-cols-3">
+  <p class="col-span-1">Email:</p>
+  <p class="col-span-1" *ngIf="userProfile.email">
+    {{ userProfile.email }}
+  </p>
+  <p class="col-span-1" *ngIf="!userProfile.email">Private</p>
+</div>
+<div class="grid grid-cols-2 p-2 border-b-2 lg:grid-cols-3">
+  <p class="col-span-1">Join Date</p>
+  <p class="col-span-1">{{ userProfile.creationDate | date }}</p>
+</div>
+<div class="grid grid-cols-2 p-2 border-b-2 lg:grid-cols-3">
+  <p class="col-span-1">profession</p>
+  <p class="col-span-1" *ngIf="userProfile.profession">coder filler</p>
+  <p class="col-span-1" *ngIf="!userProfile.profession">Private</p>
+</div>
+<div class="grid grid-cols-2 p-2 lg:grid-cols-3">
+  <p class="col-span-1">age</p>
+  <p class="col-span-1" *ngIf="userProfile.age">29</p>
+  <p class="col-span-1" *ngIf="!userProfile.age">Private</p>
+</div> -->
+<div
+  class="flex flex-col h-full justify-start items-start w-full relative gap-[5px] pl-4 pr-px py-3.5 rounded-[13px] bg-[#f3f3f3]"
+  style="box-shadow: 0px 4px 4px 0 rgba(0, 0, 0, 0.25);"
+  *ngIf="userProfile"
+>
+  <div
+    class="flex justify-start items-start self-stretch flex-grow-0 flex-shrink-0 relative py-2.5"
+  >
+    <p
+      class="flex-grow-0 flex-shrink-0 w-[170px] text-base text-left text-black"
+    >
+      Full Name
+    </p>
+    <p
+      class="flex-grow w-full text-base text-left text-black"
+      *ngIf="userProfile.firstName"
+    >
+      {{ userProfile.firstName }} {{ userProfile.lastName }}
+    </p>
+  </div>
+  <div
+    class="self-stretch flex-grow-0 flex-shrink-0 h-px bg-[#d9d9d9]/60"
+  ></div>
+  <div
+    class="flex justify-start items-start self-stretch flex-grow-0 flex-shrink-0 relative py-1.5"
+  >
+    <p
+      class="flex-grow-0 flex-shrink-0 w-[170px] text-base text-left text-black"
+    >
+      Username
+    </p>
+    <p class="flex-grow-0 flex-shrink-0 w-full text-base text-left text-black">
+      {{ userProfile.userName }}
+    </p>
+  </div>
+  <div
+    class="self-stretch flex-grow-0 flex-shrink-0 h-px bg-[#d9d9d9]/60"
+  ></div>
+
+  <div
+    class="flex justify-start items-start self-stretch flex-grow-0 flex-shrink-0 relative py-2.5"
+  >
+    <p
+      class="flex-grow-0 flex-shrink-0 w-[170px] text-base text-left text-black"
+    >
+      Join Date
+    </p>
+    <p class="flex-grow w-full text-base text-left text-black">
+      {{ userProfile.creationDate | date }}
+    </p>
+  </div>
+  <div
+    class="self-stretch flex-grow-0 flex-shrink-0 h-px bg-[#d9d9d9]/60"
+  ></div>
+</div>

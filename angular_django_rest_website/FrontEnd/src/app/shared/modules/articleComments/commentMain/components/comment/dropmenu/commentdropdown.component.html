@@ -1,0 +1,58 @@
+<div
+  class="flex flex-col justify-start items-start relative overflow-hidden bg-[#f3f3f3]"
+>
+  <div
+    class="flex justify-center items-center self-stretch flex-grow-0 flex-shrink-0 relative gap-2.5 px-[60px] py-2.5 bg-white hover:bg-skin-base"
+    (click)="onClick('edit')"
+    *ngIf="isAuthor | async"
+  >
+    <p class="flex-grow-0 flex-shrink-0 text-base text-left text-black">Edit</p>
+  </div>
+  <div
+    class="self-stretch flex-grow-0 flex-shrink-0 h-[1px] bg-[#d9d9d9]"
+    *ngIf="isAuthor | async"
+  ></div>
+  <div
+    class="flex justify-start items-start self-stretch flex-grow-0 flex-shrink-0 relative gap-2.5 px-[60px] py-2.5 bg-white hover:bg-skin-formError"
+    (click)="onClick('delete')"
+    *ngIf="(isAuthor | async) && !isReply"
+  >
+    <p class="flex-grow-0 flex-shrink-0 text-base text-left text-black">
+      Delete
+    </p>
+  </div>
+  <div
+    class="flex justify-start items-start self-stretch flex-grow-0 flex-shrink-0 relative gap-2.5 px-[60px] py-2.5 bg-white hover:bg-skin-formError"
+    (click)="onClick('deleteReply')"
+    *ngIf="(isAuthor | async) && isReply"
+  >
+    <p class="flex-grow-0 flex-shrink-0 text-base text-left text-black">
+      Delete
+    </p>
+  </div>
+  <div
+    class="self-stretch flex-grow-0 flex-shrink-0 h-[1px] bg-[#d9d9d9]"
+    *ngIf="isAuthor | async"
+  ></div>
+  <div
+    class="flex justify-start items-start self-stretch flex-grow-0 flex-shrink-0 relative gap-2.5 px-[60px] py-2.5 bg-white hover:bg-skin-base"
+    (click)="onClick('reply')"
+    *ngIf="!isReply"
+  >
+    <p class="flex-grow-0 flex-shrink-0 text-base text-left text-black">
+      Reply
+    </p>
+  </div>
+  <div
+    *ngIf="!isReply"
+    class="self-stretch flex-grow-0 flex-shrink-0 h-[1px] bg-[#d9d9d9]"
+  ></div>
+  <div
+    class="flex justify-start items-start self-stretch flex-grow-0 flex-shrink-0 relative gap-2.5 px-[60px] py-2.5 bg-white hover:bg-skin-formError"
+    (click)="onClick('report')"
+  >
+    <p class="flex-grow-0 flex-shrink-0 text-base text-left text-black">
+      Report
+    </p>
+  </div>
+</div>

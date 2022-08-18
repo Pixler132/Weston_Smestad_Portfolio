@@ -1,0 +1,32 @@
+{
+footer:{
+    mainImg: string
+    altImg: string
+    mainTitle: string
+    altTitle: string
+    mainBody: string
+    altBody: string
+    socialLink: []
+  }
+}
+
+{
+  mediaType:string
+  socialUrl: string  
+}
+
+{
+ user: {
+    userName: { 
+      newUserName: string | null 
+    }
+    email: { 
+      newEmail: string | null 
+    }
+    password: {
+      newPassword: string
+      confirmPassword: string
+      oldPassword: string
+    } | null
+  }
+}

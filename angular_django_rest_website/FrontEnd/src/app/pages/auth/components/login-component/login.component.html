@@ -1,0 +1,100 @@
+<div
+  class="text-skin-base w-full flex items-center justify-center min-h-[100vh] relative text-center overflow-hidden bg-cover"
+>
+  <!--bg-[url('/assets/images/bg-img.jpg')] -->
+  <div
+    class="px-8 py-6 mx-4 mt-4 text-left bg-skin-base rounded shadow-lg sm:w-[400px]"
+  >
+    <div class="flex justify-center">
+      <button
+        class="z-10 hidden rounded-full w-11 h-11 sm:block"
+        [routerLink]="['/']"
+      >
+        <mat-icon class="text-2xl font-bold text-center">
+          arrow_backward
+        </mat-icon>
+      </button>
+      <img src="assets/images/dz3.png" alt="" class="" />
+    </div>
+    <h3 class="text-2xl font-bold text-center">
+      Login to your account
+    </h3>
+    <!-- <div *ngIf="">
+      <p class="text-base font-bold text-center text-red-600">
+        {{ backendErrors$ | async }}
+      </p>
+    </div> -->
+    <dz-backendErrors
+      *ngIf="backendErrors$ | async"
+      [backendErrors]="backendErrors$ | async"
+    ></dz-backendErrors>
+
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <div class="mt-4">
+        <div>
+          <label class="block" for="email">Email or Username</label>
+          <input
+            type="text"
+            placeholder=""
+            formControlName="userObject"
+            class=""
+          />
+          <span
+            class="text-xs tracking-wide text-red-600"
+            *ngIf="
+              form.controls['userObject'].touched &&
+              form.controls['userObject'].invalid
+            "
+          >
+            Required
+          </span>
+          <span
+            class="text-xs tracking-wide text-red-600"
+            *ngIf="backendErrors$ | async"
+          >
+            invalid login
+          </span>
+        </div>
+        <div class="mt-4">
+          <label class="block">Password</label>
+          <input type="password" formControlName="password" class="" />
+          <span
+            class="text-xs tracking-wide text-red-600"
+            *ngIf="
+              form.controls['password'].touched &&
+              form.controls['password'].invalid
+            "
+          >
+            Required
+          </span>
+        </div>
+        <div class="flex items-baseline justify-between">
+          <dz-spinner-001
+            *ngIf="isSubmitting$ | async"
+            class="h-10 pt-5 mb-1 ml-5"
+          ></dz-spinner-001>
+          <button
+            class="px-6 py-2 mt-4 rounded-lg hover:text-skin-hover bg-skin-button-accent text-skin-button hover:bg-skin-button-accent-hover"
+            *ngIf="!(isSubmitting$ | async)"
+            [disabled]="isSubmitting$ | async"
+          >
+            Login
+          </button>
+
+          <a
+            [routerLink]="['/register']"
+            class="text-sm text-skin-links hover:underline"
+          >
+            Forgot password?
+          </a>
+        </div>
+        <a
+          [routerLink]="['/register']"
+          class="text-sm text-skin-links hover:underline"
+        >
+          Need an account?
+        </a>
+      </div>
+    </form>
+  </div>
+</div>

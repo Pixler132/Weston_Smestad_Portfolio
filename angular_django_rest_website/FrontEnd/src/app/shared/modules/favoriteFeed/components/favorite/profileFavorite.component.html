@@ -1,0 +1,27 @@
+<div class="flex flex-col items-start justify-start">
+  <div
+    class="flex justify-start items-center flex-grow-0 flex-shrink-0 w-full h-9 relative gap-2.5 px-[22px] bg-[#d9d9d9]/60"
+  >
+    <p class="flex-grow-0 flex-shrink-0 text-base text-left text-black">
+      {{ favorite.creationDate | dateAgo }}
+    </p>
+  </div>
+  <div
+    class="flex justify-start items-start flex-grow-0 flex-shrink-0 relative gap-2.5 p-2.5"
+  >
+    <p
+      class="flex-grow-0 flex-shrink-0 w-full text-[29px] font-bold text-left text-black"
+    >
+      {{ favorite.articleTitle }}
+    </p>
+  </div>
+  <div
+    class="flex justify-start items-center self-stretch flex-grow-0 flex-shrink-0 relative overflow-hidden gap-2.5 px-2.5 pb-2.5"
+  >
+    <p
+      class="flex-grow-0 flex-shrink-0 text-base font-bold text-left text-[#ee1c1c]"
+    >
+      {{ favorite.author.username }}
+    </p>
+  </div>
+</div>

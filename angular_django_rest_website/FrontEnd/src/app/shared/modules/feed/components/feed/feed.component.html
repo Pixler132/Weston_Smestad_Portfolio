@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<!-- <dz-tile-type-002></dz-tile-type-002> -->
+
+<div class="">
+  <div class="">
+    <body class="">
+      <h2 class="text-xl font-medium text-red-700 uppercasefont-Montserrat">
+        Latest Articles
+      </h2>
+      <div>
+        <div
+          class="py-4 border-t"
+          *ngFor="let article of feed$ | async; let x = index"
+        >
+          <dz-card-type-001 [article]="article" [index]="x"></dz-card-type-001>
+        </div>
+      </div>
+    </body>
+  </div>
+  <ng-template #noMatches [ngIf]="(total$ | async) === 0" class="flex">
+    <H1>Could not find any articles.</H1>
+  </ng-template>
+
+  <div id="pagination" *ngIf="!(isLoading$ | async)">
+    <dz-pagination
+      [totalCount]="total$ | async"
+      [currentPage]="currentPage"
+      [limit]="limit"
+      (newPageNumber)="onPageNavigated($event)"
+    ></dz-pagination>
+  </div>
+</div>

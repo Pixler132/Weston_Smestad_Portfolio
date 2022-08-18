@@ -1,0 +1,126 @@
+<!-- <div class="max-w-screen-sm mx-auto antialiased bg-dz-light" [formGroup]="form">
+  <form class="w-full pt-2 bg-white rounded-lg">
+    <div class="flex flex-wrap mb-6 -mx-3">
+      <h2 class="px-4 pt-3 pb-2 text-lg text-gray-800">Add a new comment</h2>
+      <div class="w-full px-3 mt-2 mb-2 md:w-full">
+        <textarea
+          formControlName="content"
+          class="w-full h-20 px-3 py-2 font-medium leading-normal placeholder-gray-700 bg-gray-100 border border-gray-400 rounded resize-none focus:outline-none focus:bg-white"
+          name="body"
+          placeholder="Type Your Comment"
+          required
+        ></textarea>
+      </div>
+      <div class="flex items-end justify-end w-full px-3 md:w-full">
+        <div class="flex w-full md:flex-grow" *ngIf="this.comment">
+          <button
+            (click)="onSave()"
+            class="w-1/2 px-4 py-1 mr-1 font-medium tracking-wide text-gray-700 bg-white border border-gray-400 rounded-lg hover:bg-green-300"
+          >
+            Post Edit
+          </button>
+          <button
+            (click)="onCancel()"
+            class="w-1/2 px-4 py-1 mr-1 font-medium tracking-wide text-gray-700 bg-white border border-gray-400 rounded-lg hover:bg-red-500"
+          >
+            Cancel Edit
+          </button>
+        </div>
+        <input
+          *ngIf="!this.comment"
+          (click)="onSave()"
+          class="px-4 py-1 mr-1 font-medium tracking-wide text-center text-gray-700 bg-white border border-gray-400 rounded-lg hover:bg-green-300"
+          value="Post Comment"
+        />
+      </div>
+    </div>
+  </form>
+</div> -->
+<div
+  class="flex justify-start items-start w-full relative gap-2.5 pl-2.5 py-2.5 rounded-lg"
+  [formGroup]="form"
+>
+  <form class="flex w-full">
+    <img
+      *ngIf="comment && comment.author"
+      [src]="baseMedia + comment.author.profileImg"
+      class="flex-grow-0 flex-shrink-0 w-20 h-20 rounded-[107px] object-cover"
+    />
+    <img
+      *ngIf="commentId"
+      [src]="baseMedia + (currentUser$ | async)?.currentUser?.image"
+      class="flex-grow-0 flex-shrink-0 w-20 h-20 rounded-[107px] object-cover"
+    />
+    <div
+      class="flex flex-col justify-center items-start flex-grow space-y-[-1px] px-6 pt-3.5 pb-[22px] rounded-[11px] bg-[#f3f3f3] border border-[#d9d9d9]/60"
+    >
+      <div
+        class="flex items-start self-stretch justify-start flex-grow-0 flex-shrink-0"
+      >
+        <div
+          class="flex justify-start items-start flex-grow-0 flex-shrink-0 relative gap-[5px]"
+        >
+          <p
+            class="flex-grow-0 flex-shrink-0 text-xl text-left text-black uppercase"
+            *ngIf="comment"
+          >
+            {{ comment.author?.username }}
+          </p>
+          <p
+            class="flex-grow-0 flex-shrink-0 text-xl text-left text-black uppercase"
+            *ngIf="commentId"
+          >
+            {{ (currentUser$ | async)?.currentUser?.userName }}
+          </p>
+          <p
+            class="flex-grow-0 flex-shrink-0 text-xl text-left text-black uppercase"
+            *ngIf="!comment && !commentId"
+          >
+            New Comment
+          </p>
+        </div>
+      </div>
+
+      <textarea
+        formControlName="content"
+        class="w-full h-20 px-3 py-2 font-medium leading-normal placeholder-gray-700 bg-gray-100 border border-gray-400 rounded resize-none focus:outline-none focus:bg-white"
+        name="body"
+        placeholder="Type Your Comment"
+        required
+      ></textarea>
+
+      <div
+        class="flex items-start self-stretch justify-end flex-grow-0 flex-shrink-0 gap-1"
+      >
+        <div
+          class="flex justify-start items-start flex-grow-0 flex-shrink-0 relative gap-2.5 px-3 py-1 rounded-xl bg-blue-600"
+          (click)="onSave()"
+        >
+          <p
+            class="flex-grow-0 flex-shrink-0 text-base text-left text-white"
+            *ngIf="comment"
+          >
+            Save
+          </p>
+          <p
+            class="flex-grow-0 flex-shrink-0 text-base text-left text-white"
+            *ngIf="!comment"
+          >
+            Post
+          </p>
+        </div>
+        <div
+          class="flex justify-start items-start flex-grow-0 flex-shrink-0 relative gap-2.5 px-3 py-1 rounded-xl bg-[#ffe1e1]"
+          *ngIf="commentId || !idProps || isReply"
+        >
+          <p
+            (click)="onCancel()"
+            class="flex-grow-0 flex-shrink-0 text-base text-left text-black"
+          >
+            Cancel
+          </p>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

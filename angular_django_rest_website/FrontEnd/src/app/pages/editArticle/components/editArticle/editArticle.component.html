@@ -1,0 +1,8 @@
+<!-- <dz-loading *ngIf="isLoading$ | async"></dz-loading> -->
+<dz-article-form
+  *ngIf="initialValues$ | async"
+  [initialValues]="initialValues$ | async"
+  [isSubmitting]="isSubmitting$ | async"
+  [errors]="backendErrors$ | async"
+  (articleSubmit)="onSubmit($event)"
+></dz-article-form>
