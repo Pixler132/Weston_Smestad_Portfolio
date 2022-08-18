@@ -1,0 +1,14 @@
+                                      
+    |4|222     |6|                        
+    ###O       ###O                        
+    |.| 343    |4|   |3|                  
+                     ###O                 
+                     | |           | | 
+                                   ###O
+                                   | |
+
+dddddddddddddddddddddddddasdfasdfasdfasdf
+
+| |   |5|   | |   | |
+###O  ###O  ###O  ###O
+|8|   | |   | |   | |

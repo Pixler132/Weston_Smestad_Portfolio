@@ -1,0 +1,3 @@
+find matches of text file in bug_1_1 in different landscape text files
+
+it returns the number of matches in each text file
